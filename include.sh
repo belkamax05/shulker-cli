@@ -9,7 +9,24 @@ __echo_debug "Starting Shulker CLI initialization..."
 __echo_error() {
     echo "ERROR: $1" >&2
 }
-__START_TIME=$(date +%s%3N)
+__get_uname() {
+    echo $(uname -s)
+}
+__is_linux() {
+    [[ "$(__get_uname)" == "Linux" ]]
+}
+
+__is_darwin() {
+    [[ "$(__get_uname)" == "Darwin" ]]
+}
+__is_macos() {
+    __is_darwin
+}
+__get_time_ms() {
+    __is_linux && date +%s%3N
+    __is_macos && date +%s%3N
+}
+__START_TIME=$(__get_time_ms)
 __CURRENT_FILE=${(%):-%N}
 #! Essentials for Shulker CLI
 SHULKER_DIR=$(realpath $(dirname $__CURRENT_FILE))
@@ -59,6 +76,6 @@ else
     source "$SHULKER_DIST/shulker.sh"
 fi
 
-__END_TIME=$(date +%s%3N)
+__END_TIME=$(__get_time_ms)
 __ELAPSED_TIME=$((__END_TIME - $__START_TIME))
 __echo_debug "Shulker boot $__ELAPSED_TIME in milliseconds. Located at $SHULKER_DIR"
