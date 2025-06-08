@@ -1,0 +1,1 @@
+sound-pipe $SHULKER_DIR/assets/sound/tada.mp3 "$@"
