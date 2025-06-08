@@ -9,9 +9,16 @@ __compile_commands() {
             __echo_debug "Add command: $command_name"
             # Read the content of the file
             command_content=$(cat "$file")
-            # Create the function definition
-            echo "${command_name}() {
-  $(cat "$file")
+            
+            local is_unwrapped=false
+            [[ $command_name == -* ]] && is_unwrapped=true
+            
+            #? When starts with "-", do not wrap it into a function
+            [[ $is_unwrapped == true ]] && echo "$(cat "$file")" >> "$SHULKER_DIST/commands.sh"
+
+            #? Create the function definition
+            [[ $is_unwrapped == false ]] && echo "${command_name}() {
+    $(cat "$file")
 }" >> "$SHULKER_DIST/commands.sh"
         fi
     done

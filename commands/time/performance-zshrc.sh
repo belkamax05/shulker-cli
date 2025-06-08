@@ -1,0 +1,1 @@
+performance source ~/.zshrc

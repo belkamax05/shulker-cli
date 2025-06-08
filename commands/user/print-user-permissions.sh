@@ -1,0 +1,7 @@
+echo "Current user: $(whoami)"
+echo "Current group: $(id -gn)"
+if [[ $(id -Gn | grep -c admin) -eq 0 ]]; then
+    echo "You dont have admin rights"
+else
+    echo "You have admin rights"
+fi
