@@ -24,7 +24,7 @@ __is_macos() {
 }
 __get_time_ms() {
     __is_linux && date +%s%3N
-    __is_macos && date +%s%3N
+    __is_macos && gdate +%s%3N
 }
 __START_TIME=$(__get_time_ms)
 __CURRENT_FILE=${(%):-%N}
