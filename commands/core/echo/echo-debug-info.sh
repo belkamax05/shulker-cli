@@ -1,0 +1,1 @@
+is-debug && echo-debug $@

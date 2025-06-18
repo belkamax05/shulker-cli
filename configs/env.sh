@@ -1,0 +1,1 @@
+SHU_START_TIME=$(get-time-ms)

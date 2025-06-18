@@ -1,0 +1,1 @@
+is-trace && echo "${COLOR_CYAN}[trace]${STYLE_RESET} $1"

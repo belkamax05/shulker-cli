@@ -3,7 +3,7 @@ __compile_core() {
     local files_list=()
     for file in $(find "$SHULKER_DIR/core" -type f -name "*.sh" -print0 | sort); do
         if [[ -f "$file" ]]; then
-            __echo_debug "Add file: $file"
+            is-verbose && echo-debug "Add file: $file"
             files_list+=("$file")
             source "$file"
         fi

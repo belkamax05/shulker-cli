@@ -4,9 +4,9 @@ __compile_merge() {
     chmod +x "$SHULKER_DIST/shulker.sh"
     rm "$SHULKER_DIST/core.sh" "$SHULKER_DIST/commands.sh" "$SHULKER_DIST/configs.sh" "$SHULKER_DIST/runtime.sh"
     if [[ -f "$SHULKER_DIST/shulker.sh" ]]; then
-        __echo_success "Shulker CLI compiled successfully at $SHULKER_DIST/shulker.sh"
+        echo-success "Shulker CLI compiled successfully at $SHULKER_DIST/shulker.sh"
     else
-        __echo_error "Failed to compile Shulker CLI."
+        echo-error "Failed to compile Shulker CLI."
         return $CODE_ERROR
     fi
 }

@@ -1,4 +1,4 @@
-! __is_macos && __echo_error "Not allowed on non-Mac device" && return 0
+! is-macos && echo-error "Not allowed on non-Mac device" && return 0
 local current_user=$(whoami)
 print-user-permissions
 echo "---"

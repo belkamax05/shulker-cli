@@ -1,4 +1,4 @@
-echo "Operating System: $(__get_uname)"
+echo "Operating System: $(get-uname)"
 
-__is_linux && echo "Is Linux: true" || echo "Is Linux: false"
-__is_macos && echo "Is macOS: true" || echo "Is macOS: false"
+is-linux && echo "Is Linux: true" || echo "Is Linux: false"
+is-macos && echo "Is macOS: true" || echo "Is macOS: false"
