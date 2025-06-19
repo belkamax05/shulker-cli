@@ -6,7 +6,7 @@ __compile_commands() {
     find "$SHULKER_DIR/commands" -type f -name "*.sh" -print0 | sort -z | while IFS= read -r -d $'\0' file; do
         if [[ -f "$file" ]]; then
             command_name=$(basename "$file" .sh)
-            is-verbose && echo-debug "Add command: $command_name"
+            echo-verbose-debug "Add command: $command_name"
             # Read the content of the file
             command_content=$(cat "$file")
             

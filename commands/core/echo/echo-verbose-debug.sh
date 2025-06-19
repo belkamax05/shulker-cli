@@ -1,0 +1,1 @@
+is-verbose && echo-debug "${COLOR_CYAN}[verbose]${STYLE_RESET} $@"
