@@ -4,3 +4,4 @@ fi
 __paplay() {
     paplay "$@"
 }
+__paplay "$@"

@@ -30,3 +30,4 @@ if shu-get-need-recompile; then
     source "$SHULKER_BUNDLE_PATH"
     trace-add "Shulker bundle included after recompile"
 fi
+trace-add "Shulker CLI started"

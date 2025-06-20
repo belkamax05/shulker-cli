@@ -4,6 +4,4 @@ local dest="$2"
 local importPath="$3"
 
 clone-if-missing "$repo" "$dest"
-trace-add "Cloned $repo to $dest"
-
 source-if-exists "$dest/$importPath"
