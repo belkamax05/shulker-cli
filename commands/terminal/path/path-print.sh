@@ -1,0 +1,1 @@
+echo "$PATH" | tr ':' '\n' | sed 's/^/  /' | sed 's/^/  /'

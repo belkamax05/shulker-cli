@@ -1,0 +1,1 @@
+trace-add "NVM loaded (TODO)"
