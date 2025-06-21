@@ -7,25 +7,27 @@ local directoryTo="$3"
 
 local fromRelativePath="${filePath#$directoryFrom/}"
 
+local preffix="$(format-cmd 'link-file-recursive-mapper')"
+
 shift 3
 
-echo-verbose-debug "${COLOR_CYAN}[link-file-recursive-mapper]${STYLE_RESET}. File: ${COLOR_ARGS}$fromRelativePath${STYLE_RESET}, Dir: ${COLOR_ARGS}$fileDir${STYLE_RESET}. Rest args: $@"
+echo-verbose-debug "$preffix. File: $(format-args "$fromRelativePath"), Dir: $(format-args "$fileDir"). Rest args: $@"
 
-echo-verbose-debug "FromDir: ${COLOR_ARGS}$directoryFrom${STYLE_RESET}, ToDir: ${COLOR_ARGS}$directoryTo${STYLE_RESET}"
+echo-verbose-debug "$preffix FromDir: $(format-args "$directoryFrom"), ToDir: $(format-args "$directoryTo")"
 
 local fromFilePath="$directoryFrom/$fromRelativePath"
 local toFilePath="$directoryTo/$fromRelativePath"
 
-echo-verbose-debug "FromFilePath: ${COLOR_ARGS}$fromFilePath${STYLE_RESET}, ToFilePath: ${COLOR_ARGS}$toFilePath${STYLE_RESET}"
+echo-verbose-debug "$preffix FromFilePath: $(format-args "$fromFilePath"), ToFilePath: $(format-args "$toFilePath")"
 
 if ! file-is-link "$toFilePath"; then
     link-file "$fromFilePath" "$toFilePath" "$@"
     return $CODE_SUCCESS
 else
     local linkPointingTo=$(link-pointing-to "$toFilePath")
-    echo-verbose-debug "${COLOR_YELLOW}$toFilePath${STYLE_RESET} already a link, points to: ${COLOR_YELLOW}$linkPointingTo${STYLE_RESET}"
+    echo-verbose-debug "$(format-args "$toFilePath") already a link, points to: $(format-args "$linkPointingTo")"
     if [ "$linkPointingTo" != "$fromFilePath" ]; then
-        echo-info "Linking ${COLOR_YELLOW}$toFilePath${STYLE_RESET} to ${COLOR_YELLOW}$fromFilePath${STYLE_RESET}"
+        echo-info "$preffix Linking $(format-args "$toFilePath")} to $(format-args "$fromFilePath")"
         rm -f "$toFilePath"
         link-file "$fromFilePath" "$toFilePath" "$@"
         return $CODE_SUCCESS

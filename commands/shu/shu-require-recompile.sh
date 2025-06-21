@@ -9,7 +9,7 @@ if [[ ! -f $hashFile ]]; then
     return $CODE_SUCCESS
 fi
 local repoHashFile=$(cat "$SHULKER_HASH_PATH")
-local repoHashValue=$(shu-get-current-hash)
+local repoHashValue=$(shu-current-hash)
 if [[ "$repoHashValue" != "$repoHashFile" ]]; then
     echo-info "Shulker needs to be recompiled due to changes in the source files. Old hash: $repoHashFile, New hash: $repoHashValue"
     return $CODE_SUCCESS

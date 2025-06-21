@@ -1,0 +1,1 @@
+get-directory-hash "$SHULKER_DIR"

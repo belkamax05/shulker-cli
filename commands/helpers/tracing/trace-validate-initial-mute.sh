@@ -1,0 +1,3 @@
+trace-validate-initial() {
+    #? muted
+}

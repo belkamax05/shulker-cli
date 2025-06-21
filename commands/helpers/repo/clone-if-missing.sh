@@ -1,8 +1,10 @@
 local repo="$1"
 local dest="$2"
 
+local repoDestStr="$(format-args "$repo") -> $(format-args "$dest")"
+
 if [ ! -d "$dest" ]; then
-    echo-info "Cloning $COLOR_ARGS$repo$STYLE_RESET to $COLOR_ARGS$dest$STYLE_RESET"
+    echo-info "$(format-cmd 'clone-if-missing') Cloning $repoDestStr"
     git clone "$repo" "$dest"
 fi
-trace-add "[clone-if-missing] $repo -> $dest"
+trace-add "$(format-cmd 'clone-if-missing') Loaded $repoDestStr"

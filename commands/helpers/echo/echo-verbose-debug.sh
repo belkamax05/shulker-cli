@@ -1,1 +1,1 @@
-is-verbose && echo-debug "${COLOR_CYAN}[verbose]${STYLE_RESET} $@"
+is-verbose && echo-debug "$(format-cmd "verbose") $@"
