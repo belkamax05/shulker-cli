@@ -14,7 +14,7 @@ local allHashesConcat=""
 precompile-fileHash-mapper() {
     local filePath="$1"
     local hashFilePath=$filePath.hash
-    echo-debug "$preffix Add file hash to bundle: $(format-args "$filePath")"
+    echo-debug "$preffix Add hash for bundle: $(format-args "$filePath")"
     local fileHash=$(cat "$hashFilePath")
     allHashesConcat+="$fileHash"
 }
@@ -32,42 +32,32 @@ save-all-hashes() {
 each-sh-recursive "$SHULKER_DIST/precompile" "precompile-fileHash-mapper" #! needs to be sorted by param
 
 bundle-all-files() {
+    local msg=$1
+    echo-info "$preffix $msg"
     # > "$SHULKER_BUNDLE_PATH" #? Clear the bundle file
     rm -f "$SHULKER_BUNDLE_PATH" #? Clear the bundle file
     touch "$SHULKER_BUNDLE_PATH" #? Create the bundle file if it doesn't exist
     each-sh-recursive "$SHULKER_DIST/precompile" "precompile-bundler-mapper" #! needs to be sorted by param
     # echo "$allFilesConcat" > "$SHULKER_BUNDLE_PATH"
     save-all-hashes
+    trace-add "$preffix $msg completed"
 }
 
 local currentHashName="$SHULKER_BUNDLE_PATH.hash"
 if [[ ! -f "$SHULKER_BUNDLE_PATH" ]]; then
-    echo-info "$preffix Shulker bundle not found. Recompiling"
-    #!!!
-    bundle-all-files
-    trace-add "$preffix Shulker bundle not found. Recompiled"
+    bundle-all-files "bundle not found."
     return $CODE_SUCCESS
 fi
 if [[ ! -f "$currentHashName" ]]; then
-    echo-info "$preffix Shulker bundle hash file not found. Recompiling"
-    #!!!
-    bundle-all-files
-    trace-add "$preffix Shulker bundle hash file not found. Recompiled"
+    bundle-all-files "hash not found."
     return $CODE_SUCCESS
 fi
 local currentHash=$(cat "$currentHashName")
 if [[ -z "$currentHash" ]]; then
-    echo-info "$preffix No bundle hash found. Recompiling"
-    #!!!
-    bundle-all-files
-    trace-add "$preffix No bundle hash found. Recompiled"
+    bundle-all-files "hash is empty."
     return $CODE_SUCCESS
 fi
 if [[ $currentHash != $allHashesConcat ]]; then
-    echo-info "$preffix Shulker bundle hash mismatch. Recompiling"
-    #!!!
-    bundle-all-files
-    trace-add "$preffix Shulker bundle hash mismatch. Recompiled"
+    bundle-all-files "hash mismatch."
     return $CODE_SUCCESS
 fi
-trace-add "$preffix Shulker bundle path: $SHULKER_BUNDLE_PATH"

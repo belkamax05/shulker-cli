@@ -1,2 +1,2 @@
 path-remove-duplicates
-trace-add "Path duplicates removed"
+trace-add "Runtime paths deduplicated"
