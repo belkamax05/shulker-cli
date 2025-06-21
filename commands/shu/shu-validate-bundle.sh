@@ -7,7 +7,7 @@
 
 #! new
 local preffix="$(format-cmd 'shulker-validate-bundle')"
-trace-add "Shulker new bundle starting"
+trace-add "$preffix Shulker new bundle starting"
 local allHashesConcat=""
 # local allFilesConcat=""
 

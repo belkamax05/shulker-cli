@@ -17,4 +17,4 @@ fi
 shu-validate-precompile
 shu-validate-bundle
 
-trace-add "Shulker CLI started"
+trace-add "$(format-cmd 'include') Shulker CLI started"
