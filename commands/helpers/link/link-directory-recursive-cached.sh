@@ -16,13 +16,13 @@ local cacheFilePathFormatted=$(format-args "$cacheFilePath")
 if [[ ! -f "$cacheFilePath" ]]; then
     echo-debug "$preffix Cache file not found. Running linking."
     link-directory-recursive "$directoryFrom" "$directoryTo" "$@"
-    echo "$(get-directory-hash "$directoryFrom")" > "$cacheFilePath"
+    echo "$(get-directory-updated-token "$directoryFrom")" > "$cacheFilePath"
     trace-add "$preffix Cache file created at $cacheFilePathFormatted"
     return $CODE_SUCCESS
 fi
 
 local savedHash=$(cat "$cacheFilePath")
-local currentHash=$(get-directory-hash "$directoryFrom")
+local currentHash=$(get-directory-updated-token "$directoryFrom")
 if [[ "$currentHash" != "$savedHash" ]]; then
     echo-debug "$preffix Cache file hash does not match current hash. Running linking."
     link-directory-recursive "$directoryFrom" "$directoryTo" "$@"

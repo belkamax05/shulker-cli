@@ -1,1 +1,2 @@
 export PATH=$(echo -n $PATH | awk -v RS=: -v ORS=: '!a[$0]++' | sed 's/:$//')
+trace-add "$(format-cmd 'path-remove-duplicates') PATH duplicates removed"

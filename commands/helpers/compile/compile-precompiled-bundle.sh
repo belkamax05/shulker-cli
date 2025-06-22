@@ -1,12 +1,12 @@
 local distDir=$1
 local bundlePath=$2
-local preffix="$(format-cmd 'compile-precompiled-bundle')"
+local prefix="$(format-cmd 'compile-precompiled-bundle')"
 
 local allHashesConcat=""
 precompile-fileHash-mapper() {
     local filePath="$1"
     local hashFilePath=$filePath.hash
-    echo-debug "$preffix Add hash for bundle: $(format-args "$filePath")"
+    echo-debug "$prefix Add hash for bundle: $(format-args "$filePath")"
     local fileHash=$(cat "$hashFilePath")
     allHashesConcat+="$fileHash"
 }
@@ -14,19 +14,19 @@ each-sh-recursive "$distDir/precompile" "precompile-fileHash-mapper"
 
 precompile-bundler-mapper() {
     local filePath="$1"
-    echo-debug "$preffix Add file to bundle: $(format-args "$filePath")"
+    echo-debug "$prefix Add file to bundle: $(format-args "$filePath")"
     local content="$(cat "$filePath")"
     # allFilesConcat+="$content"
     echo "$content" >> "$bundlePath"
 }
 bundle-all-files() {
     local msg=$1
-    echo-info "$preffix $msg"
     rm -f "$bundlePath" #? Clear the bundle file
     touch "$bundlePath" #? Create the bundle file if it doesn't exist
     each-sh-recursive "$distDir/precompile" "precompile-bundler-mapper"
     echo "$allHashesConcat" > "$bundlePath.hash"
-    trace-add "$preffix $msg completed"
+    echo-success "$prefix $msg"
+    trace-add "$prefix $msg completed"
     SHU_BUNDLE_UPDATED=true
 }
 
@@ -45,8 +45,8 @@ if [[ -z "$currentHash" ]]; then
     return $CODE_SUCCESS
 fi
 if [[ $currentHash != $allHashesConcat ]]; then
-    bundle-all-files "hash mismatch."
+    bundle-all-files "hash mismatch for $(format-args "$bundlePath"). Old hash: $(format-args "$currentHash"), new hash: $(format-args "$allHashesConcat")"
     return $CODE_SUCCESS
 fi
 
-trace-add "$preffix bundle is compiled"
+trace-add "$prefix bundle is compiled"

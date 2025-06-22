@@ -19,12 +19,10 @@ fi
 
 local hashFile="$targetFile.hash"
 
-
-
 if is-watch; then
     if [[ -f "$hashFile" ]]; then
         local previousHash=$(cat "$hashFile")
-        local currentHash=$(get-directory-hash "$sourceDir")
+        local currentHash=$(get-directory-updated-token "$sourceDir")
         if [[ "$currentHash" != "$previousHash" ]]; then
             compile-raw-directory "$sourceDir" "$targetFile"
             save-compiled-directory-hash "$sourceDir" "$targetFile"

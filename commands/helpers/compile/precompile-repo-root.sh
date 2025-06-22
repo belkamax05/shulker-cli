@@ -1,10 +1,11 @@
 local sourceDir=$1
 local distDir=$2
 
+local prefix="$(format-cmd 'precompile-repo-root')"
 local sourceDirFormatted="$(format-args "$sourceDir")"
 local distDirFormatted="$(format-args "$distDir")"
 
-echo-debug "Precompiling repository from $sourceDirFormatted to $distDirFormatted"
+echo-debug "$prefix Precompiling repository from $sourceDirFormatted to $distDirFormatted"
 
 local precompileDir="$distDir/precompile"
 
@@ -14,4 +15,4 @@ compile-commands-directory-cached "$sourceDir/commands" "$precompileDir/01.comma
 compile-raw-directory-cached "$sourceDir/configs" "$precompileDir/02.configs.sh"
 compile-raw-directory-cached "$sourceDir/runtime" "$precompileDir/03.runtime.sh"
 
-trace-add "Precompile from $sourceDirFormatted to $distDirFormatted done"
+trace-add "$prefix Precompile from $sourceDirFormatted to $distDirFormatted done"

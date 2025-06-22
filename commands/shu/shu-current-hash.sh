@@ -1,1 +1,1 @@
-get-directory-hash "$SHULKER_DIR"
+get-directory-updated-token "$SHULKER_DIR"
