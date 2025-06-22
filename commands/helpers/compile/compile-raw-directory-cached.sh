@@ -1,19 +1,19 @@
 local sourceDir="$1"
 local targetFile="$2"
 
-local preffix=$(format-cmd 'compile-raw-directory-cached')
+local prefix=$(format-cmd 'compile-raw-directory-cached')
 local sourceDirFormatted=$(format-args "$sourceDir")
 local targetFileFormatted=$(format-args "$targetFile")
 
 if [[ ! -d "$sourceDir" ]]; then
-    echo-debug "$preffix Source directory does not exist: $sourceDirFormatted"
+    echo-debug "$prefix Source directory does not exist: $sourceDirFormatted"
     return $CODE_OK
 fi
 
 if [[ ! -f "$targetFile" ]]; then
     compile-raw-directory "$sourceDir" "$targetFile"
     save-compiled-directory-hash "$sourceDir" "$targetFile"
-    trace-add "$preffix Compiled $sourceDirFormatted to file: $targetFileFormatted"
+    trace-add "$prefix Compiled $sourceDirFormatted to file: $targetFileFormatted"
     return $CODE_OK
 fi
 
@@ -26,11 +26,12 @@ if is-watch; then
         if [[ "$currentHash" != "$previousHash" ]]; then
             compile-raw-directory "$sourceDir" "$targetFile"
             save-compiled-directory-hash "$sourceDir" "$targetFile"
-            trace-add "$preffix Compiled $sourceDirFormatted to file: $targetFileFormatted"
+            echo-debug "$prefix Changes detected in $sourceDirFormatted, recompiling to $targetFileFormatted. Old hash: $previousHash, New hash: $currentHash"
+            trace-add "$prefix Compiled $sourceDirFormatted to file: $targetFileFormatted"
             return $CODE_OK
         fi
     fi
 fi
 
-trace-add "$preffix No changes detected in $sourceDirFormatted, skipping compilation."
+trace-add "$prefix No changes detected in $sourceDirFormatted, skipping compilation."
 return $CODE_OK

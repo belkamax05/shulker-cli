@@ -1,12 +1,12 @@
 local sourceDir="$1"
 local targetFile="$2"
 
-local preffix=$(format-cmd 'source-if-exists')
+local prefix=$(format-cmd 'compile-raw-directory')
 local sourceDirFormatted=$(format-args "$sourceDir")
 local targetFileFormatted=$(format-args "$targetFile")
 
 if [[ ! -d "$sourceDir" ]]; then
-    echo-debug "$preffix Source directory does not exist: $sourceDirFormatted"
+    echo-debug "$prefix Source directory does not exist: $sourceDirFormatted"
     return $CODE_OK
 fi
 
@@ -14,13 +14,13 @@ local files_list=()
 compile-raw-directory-mapper() {
     local file="$1"
     if [[ -f "$file" ]]; then
-        echo-verbose-debug "$preffix Add file: $(format-args "$file")"
+        echo-verbose-debug "$prefix Add file: $(format-args "$file")"
         files_list+=("$file")
-        source "$file"
+        # source "$file"
     fi
 }
 
 each-sh-recursive "$sourceDir" "compile-raw-directory-mapper"
 awk 'FNR==1 && NR!=1 {print ""} {print}' "${files_list[@]}" > "$targetFile"
 echo-success "$prefix Compiled raw directory: $sourceDirFormatted to file: $targetFileFormatted"
-trace-add "$preffix Compiled $sourceDirFormatted to file: $targetFileFormatted"
+trace-add "$prefix Compiled $sourceDirFormatted to file: $targetFileFormatted"

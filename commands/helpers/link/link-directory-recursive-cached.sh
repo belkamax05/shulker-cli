@@ -3,10 +3,10 @@ local directoryTo="$2"
 
 shift 2
 
-local preffix=$(format-cmd 'link-directory-recursive-cached')
+local prefix=$(format-cmd 'link-directory-recursive-cached')
 
 if [[ -z "$directoryFrom" || -z "$directoryTo" ]]; then
-    echo-error "$preffix Missing required arguments: directoryFrom and directoryTo."
+    echo-error "$prefix Missing required arguments: directoryFrom and directoryTo."
     return $CODE_ERROR
 fi
 
@@ -14,23 +14,23 @@ local cacheFilePath="$directoryFrom.shu.hash"
 local cacheFilePathFormatted=$(format-args "$cacheFilePath")
 
 if [[ ! -f "$cacheFilePath" ]]; then
-    echo-debug "$preffix Cache file not found. Running linking."
+    echo-debug "$prefix Cache file not found. Running linking."
     link-directory-recursive "$directoryFrom" "$directoryTo" "$@"
     echo "$(get-directory-updated-token "$directoryFrom")" > "$cacheFilePath"
-    trace-add "$preffix Cache file created at $cacheFilePathFormatted"
+    trace-add "$prefix Cache file created at $cacheFilePathFormatted"
     return $CODE_SUCCESS
 fi
 
 local savedHash=$(cat "$cacheFilePath")
 local currentHash=$(get-directory-updated-token "$directoryFrom")
 if [[ "$currentHash" != "$savedHash" ]]; then
-    echo-debug "$preffix Cache file hash does not match current hash. Running linking."
+    echo-debug "$prefix Cache file hash does not match current hash. Running linking."
     link-directory-recursive "$directoryFrom" "$directoryTo" "$@"
     echo "$currentHash" > "$cacheFilePath"
-    trace-add "$preffix Cache file updated at $cacheFilePathFormatted"
+    trace-add "$prefix Cache file updated at $cacheFilePathFormatted"
     return $CODE_SUCCESS
 fi
-trace-add "$preffix Cache file at $cacheFilePathFormatted didn't change, skipping linking."
+trace-add "$prefix Cache file at $cacheFilePathFormatted didn't change, skipping linking."
 # if [[ -f "$cacheFile" ]]; then
 #     echo-debug "$preffix Cache file found: $cacheFile"
 #     local cachedDirectories=$(cat "$cacheFile")

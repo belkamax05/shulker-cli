@@ -2,14 +2,14 @@ local sourceDir="$1"
 local targetFile="$2"
 local targetFileDir=$(dirname "$targetFile")
 
-local preffix="$(format-cmd 'source-commands-directory')"
+local prefix="$(format-cmd 'source-commands-directory')"
 local sourceDirFormatted=$(format-args "$sourceDir")
 
 source-commands-directory-mapper() {
     local file="$1"
     if [[ -f "$file" ]]; then
         local command_name=$(basename "$file" .sh)
-        echo-verbose-debug "$preffix Add command: $command_name"
+        echo-verbose-debug "$prefprefixfix Add command: $command_name"
         # Read the content of the file
         local fileContent=$(cat "$file")
         
@@ -26,5 +26,5 @@ source-commands-directory-mapper() {
 }
 
 each-sh-recursive "$sourceDir" "source-commands-directory-mapper"
-echo-debug "$preffix Sourced dir $sourceDirFormatted"
-trace-add "$preffix Sourced dir $sourceDirFormatted"
+echo-debug "$prefix Sourced dir $sourceDirFormatted"
+trace-add "$prefix Sourced dir $sourceDirFormatted"

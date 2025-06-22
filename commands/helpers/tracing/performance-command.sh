@@ -4,4 +4,4 @@ local currentTime=$(get-time-ms)
 $commandName "$@"
 local endTime=$(get-time-ms)
 local elapsedTime=$(($endTime - $currentTime))
-echo-info "Command $commandName took $elapsedTime ms to execute."
+echo-info "Command $(format-args "$commandName") took $elapsedTime ms to execute."

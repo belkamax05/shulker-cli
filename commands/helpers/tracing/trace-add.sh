@@ -1,3 +1,6 @@
+if [[ $TRACE == false ]]; then
+    return 0
+fi
 local endTime=$(get-time-ms)
 trace-validate-initial
 local elapsedTime=$((endTime - $SHU_START_TIME))
