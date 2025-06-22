@@ -1,0 +1,1 @@
+echo "$(repo current-user-name $@) <$(repo current-user-email $@)>"

@@ -1,0 +1,13 @@
+local currentPath=$(pwd)
+local runAt=$1
+shift 1
+cd "$runAt" || {
+    echo-error "Failed to change directory to $(format-args "$runAt")."
+    return $CODE_ERROR
+}
+repo "$@"
+cd "$currentPath" || {
+    echo-error "Failed to change back to $(format-args "$currentPath")."
+    return $CODE_ERROR
+}
+return $CODE_SUCCESS
