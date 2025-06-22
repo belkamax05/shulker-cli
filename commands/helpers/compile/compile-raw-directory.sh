@@ -1,10 +1,14 @@
 local sourceDir="$1"
 local targetFile="$2"
 
-
 local preffix=$(format-cmd 'source-if-exists')
 local sourceDirFormatted=$(format-args "$sourceDir")
 local targetFileFormatted=$(format-args "$targetFile")
+
+if [[ ! -d "$sourceDir" ]]; then
+    echo-debug "$preffix Source directory does not exist: $sourceDirFormatted"
+    return $CODE_OK
+fi
 
 local files_list=()
 compile-raw-directory-mapper() {

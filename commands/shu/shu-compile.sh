@@ -1,8 +1,3 @@
-#? This file is not intended to be sourced directly, but rather compiled and used as a part of Shulker CLI. See "include.sh" instead
-# compile-commands-directory-cached "$SHULKER_DIR/commands" "$SHULKER_DIST/precompile/commands.sh"
-# compile-raw-directory-cached "$SHULKER_DIR/configs" "$SHULKER_DIST/precompile/configs.sh"
-# compile-raw-directory-cached "$SHULKER_DIR/runtime" "$SHULKER_DIST/precompile/runtime.sh"
-
 #? Joins "core" & "commands" into a single file, so it can be used as a part of Shulker CLI.
 cat "$SHULKER_DIST/precompile/commands.sh" "$SHULKER_DIST/precompile/configs.sh" "$SHULKER_DIST/precompile/runtime.sh" > "$SHULKER_BUNDLE_PATH"
 chmod +x "$SHULKER_BUNDLE_PATH"
@@ -13,7 +8,8 @@ else
     return $CODE_ERROR
 fi
 
-touch "$SHULKER_HASH_PATH"
-echo "$(shu-current-hash)" > "$SHULKER_HASH_PATH"
+local shulkerHashPath="$SHULKER_DIST/.shulker.hash"
+touch "$shulkerHashPath"
+echo "$(shu-current-hash)" > "$shulkerHashPath"
 
 return $CODE_SUCCESS

@@ -28,6 +28,7 @@ for fnFile in \
     "helpers/color/hex-to-rgb" \
     "helpers/color/color-rgb" \
     "helpers/color/color-hex" \
+    "helpers/fs/create-folder" \
     "helpers/format/format-cmd" \
     "helpers/format/format-args"; do
     source-as-function "$SHULKER_DIR/commands/$fnFile.sh"
@@ -48,10 +49,6 @@ trace-add "[shulker-raw] Essential functions loaded"
 source-raw-directory "$SHULKER_DIR/configs"
 
 trace-add "[shulker-raw] Configs loaded"
-
-if [[ ! -d "$SHULKER_DIST" ]]; then
-    mkdir -p "$SHULKER_DIST"
-fi
 
 echo-debug "[shulker-raw] Shulker raw loaded"
 trace-add "[shulker-raw] Shulker CLI raw commands loaded"

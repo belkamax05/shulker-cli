@@ -6,6 +6,11 @@ local preffix=$(format-cmd 'compile-commands-directory')
 local sourceDirFormatted=$(format-args "$sourceDir")
 local targetFileFormatted=$(format-args "$targetFile")
 
+if [[ ! -d "$sourceDir" ]]; then
+    echo-debug "$preffix Source directory does not exist: $sourceDirFormatted"
+    return $CODE_OK
+fi
+
 compile-commands-directory-mapper() {
     local file="$1"
     if [[ -f "$file" ]]; then

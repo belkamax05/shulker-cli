@@ -1,0 +1,1 @@
+repo staged | wc -l

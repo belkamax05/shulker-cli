@@ -1,0 +1,6 @@
+local unstagedFiles=$(repo modified)
+local newFiles=$(repo created)
+local allFiles="$unstagedFiles"$'\n'"$newFiles"
+#? Remove any empty lines
+local allFiles=$(echo "$allFiles" | sed '/^$/d')
+echo "$allFiles"

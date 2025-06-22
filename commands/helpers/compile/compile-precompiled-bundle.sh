@@ -1,16 +1,8 @@
-#! old
-# if shu-require-recompile; then
-#     shu-compile
-#     shu-source-bundle
-#     trace-add "Shulker bundle included after recompile"
-# fi
+local distDir=$1
+local bundlePath=$2
+local preffix="$(format-cmd 'compile-precompiled-bundle')"
 
-#! new
-local preffix="$(format-cmd 'shulker-validate-bundle')"
-trace-add "$preffix Shulker new bundle starting"
 local allHashesConcat=""
-# local allFilesConcat=""
-
 precompile-fileHash-mapper() {
     local filePath="$1"
     local hashFilePath=$filePath.hash
@@ -18,33 +10,28 @@ precompile-fileHash-mapper() {
     local fileHash=$(cat "$hashFilePath")
     allHashesConcat+="$fileHash"
 }
+each-sh-recursive "$distDir/precompile" "precompile-fileHash-mapper"
+
 precompile-bundler-mapper() {
     local filePath="$1"
     echo-debug "$preffix Add file to bundle: $(format-args "$filePath")"
     local content="$(cat "$filePath")"
     # allFilesConcat+="$content"
-    echo "$content" >> "$SHULKER_BUNDLE_PATH"
+    echo "$content" >> "$bundlePath"
 }
-save-all-hashes() {
-    echo "$allHashesConcat" > "$SHULKER_BUNDLE_PATH.hash"
-}
-
-each-sh-recursive "$SHULKER_DIST/precompile" "precompile-fileHash-mapper" #! needs to be sorted by param
-
 bundle-all-files() {
     local msg=$1
     echo-info "$preffix $msg"
-    # > "$SHULKER_BUNDLE_PATH" #? Clear the bundle file
-    rm -f "$SHULKER_BUNDLE_PATH" #? Clear the bundle file
-    touch "$SHULKER_BUNDLE_PATH" #? Create the bundle file if it doesn't exist
-    each-sh-recursive "$SHULKER_DIST/precompile" "precompile-bundler-mapper" #! needs to be sorted by param
-    # echo "$allFilesConcat" > "$SHULKER_BUNDLE_PATH"
-    save-all-hashes
+    rm -f "$bundlePath" #? Clear the bundle file
+    touch "$bundlePath" #? Create the bundle file if it doesn't exist
+    each-sh-recursive "$distDir/precompile" "precompile-bundler-mapper"
+    echo "$allHashesConcat" > "$bundlePath.hash"
     trace-add "$preffix $msg completed"
+    SHU_BUNDLE_UPDATED=true
 }
 
-local currentHashName="$SHULKER_BUNDLE_PATH.hash"
-if [[ ! -f "$SHULKER_BUNDLE_PATH" ]]; then
+local currentHashName="$bundlePath.hash"
+if [[ ! -f "$bundlePath" ]]; then
     bundle-all-files "bundle not found."
     return $CODE_SUCCESS
 fi
@@ -61,3 +48,5 @@ if [[ $currentHash != $allHashesConcat ]]; then
     bundle-all-files "hash mismatch."
     return $CODE_SUCCESS
 fi
+
+trace-add "$preffix bundle is compiled"
