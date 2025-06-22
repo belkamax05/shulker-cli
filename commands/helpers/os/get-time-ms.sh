@@ -5,5 +5,5 @@ is-linux && get-time-ms() {
     date +%s%3N
 } && get-time-ms
 is-macos && get-time-ms() {
-    gdate +%s%3N
+    __gdate +%s%3N
 } && get-time-ms

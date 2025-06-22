@@ -6,10 +6,7 @@ local prefix="$(format-cmd 'save-compiled-directory-hash')"
 trace-add "$prefix Saving compiled directory hash for $sourceDir to $targetFile"
 
 local hashFile="$targetFile.hash"
-echo "Hash file: $hashFile"
 local currentHash="$(get-directory-updated-token $sourceDir)"
-echo "Current hash: $currentHash"
-
 trace-add "$prefix Current hash for $sourceDir: $currentHash"
 
 echo "$currentHash" > "$hashFile"
