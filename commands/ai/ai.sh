@@ -1,1 +1,1 @@
-echo "Hello from AI. Args: $@"
+echo "AI (TODO): $@"
