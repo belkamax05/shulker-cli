@@ -7,6 +7,7 @@ shift 1
 local restArgs=$@
 local prefix="$(format-cmd "not-found-process")"
 
+#? if 3 or more words are passed, assume the command is a valid AI command
 if [[ $isAtLeast3Args == true ]]; then
     ai $command $restArgs
     return $?
