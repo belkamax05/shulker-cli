@@ -5,6 +5,11 @@ shift 2
 
 local prefix=$(format-cmd 'link-directory-recursive-cached')
 
+local directoryFromFormatted=$(format-args "$directoryFrom")
+local directoryToFormatted=$(format-args "$directoryTo")
+
+trace-add "$prefix Checking for cached linking from $directoryFromFormatted to $directoryToFormatted"
+
 if [[ -z "$directoryFrom" || -z "$directoryTo" ]]; then
     echo-error "$prefix Missing required arguments: directoryFrom and directoryTo."
     return $CODE_ERROR

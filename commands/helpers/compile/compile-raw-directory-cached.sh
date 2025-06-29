@@ -5,6 +5,8 @@ local prefix=$(format-cmd 'compile-raw-directory-cached')
 local sourceDirFormatted=$(format-args "$sourceDir")
 local targetFileFormatted=$(format-args "$targetFile")
 
+trace-add "$prefix Checking for cached compilation of $sourceDirFormatted to $targetFileFormatted"
+
 if [[ ! -d "$sourceDir" ]]; then
     echo-debug "$prefix Source directory does not exist: $sourceDirFormatted"
     return $CODE_OK

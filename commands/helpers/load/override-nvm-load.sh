@@ -1,18 +1,8 @@
 if ! cmd-exists nvm; then
-    nvm() {
-        load-nvm
-        nvm "$@"
-    }
-    node() {
-        load-nvm
-        node "$@"
-    }
-    npm() {
-        load-nvm
-        npm "$@"
-    }
-    yarn() {
-        load-nvm
-        yarn "$@"
-    }
+    for inner_cmd in "${nvm_cmd_list[@]}"; do
+        eval "$inner_cmd() {
+            load-nvm
+            $inner_cmd \"\$@\"
+        }"
+    done
 fi

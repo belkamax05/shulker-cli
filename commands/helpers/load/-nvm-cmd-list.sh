@@ -1,0 +1,1 @@
+nvm_cmd_list=(nvm npm yarn node gemini)
