@@ -1,1 +1,1 @@
-echo "$COLOR_SUCCESS$STYLE_BOLD✅ Success:$STYLE_RESET $@"
+echo "$(format-success '✅ Success:') $@"

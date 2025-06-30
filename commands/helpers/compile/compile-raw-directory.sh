@@ -22,5 +22,5 @@ compile-raw-directory-mapper() {
 
 each-sh-recursive "$sourceDir" "compile-raw-directory-mapper"
 awk 'FNR==1 && NR!=1 {print ""} {print}' "${files_list[@]}" > "$targetFile"
-echo-success "$prefix Compiled raw directory: $sourceDirFormatted to file: $targetFileFormatted"
+echo-debug "$prefix Compiled raw directory: $sourceDirFormatted to file: $targetFileFormatted"
 trace-add "$prefix Compiled $sourceDirFormatted to file: $targetFileFormatted"

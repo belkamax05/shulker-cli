@@ -16,23 +16,19 @@ compile-commands-directory-mapper() {
     if [[ -f "$file" ]]; then
         local command_name=$(basename "$file" .sh)
         echo-verbose-debug "$prefix Add command: $(format-args "$command_name"))"
-        # Read the content of the file
         local fileContent=$(cat "$file")
-        
-        local is_unwrapped=false
-        [[ $command_name == -* ]] && is_unwrapped=true
-        
-        #? When starts with "-", do not wrap it into a function
-        [[ $is_unwrapped == true ]] && echo "$fileContent" >> "$targetFile"
-        #? Create the function definition
-        [[ $is_unwrapped == false ]] && echo "${command_name}() {
+        if is-command-unwrapped "$command_name"; then
+            echo "$fileContent" >> "$targetFile"
+        else
+            echo "${command_name}() {
     $fileContent
 }" >> "$targetFile"
+        fi
     fi
 }
 
 mkdir -p "$targetFileDir"
 rm -f "$targetFile"
 each-sh-recursive "$sourceDir" "compile-commands-directory-mapper"
-echo-success "$prefix Compiled commands from directory: $sourceDirFormatted to file: $targetFileFormatted"
+echo-debug "$prefix Compiled commands from directory: $sourceDirFormatted to file: $targetFileFormatted"
 trace-add "$prefix Compiled $sourceDirFormatted to file: $targetFileFormatted"

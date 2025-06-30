@@ -1,6 +1,7 @@
 #? base colors
 COLOR_CYAN="$(color-hex "#00FFFF")"
 COLOR_DARK_RED="$(color-hex "#FF3131")"
+COLOR_RED="$(color-hex "#FF0000")"
 COLOR_YELLOW="$(color-hex "#FFFF00")"
 COLOR_HOTPINK="$(color-hex "#FF00AF")"
 COLOR_GREEN="$(color-hex "#00FF00")"

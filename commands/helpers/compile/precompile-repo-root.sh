@@ -9,8 +9,10 @@ echo-debug "$prefix Precompiling repository from $sourceDirFormatted to $distDir
 
 local precompileDir="$distDir/precompile"
 
+create-folder "$distDir"
 create-folder "$precompileDir"
 
+compile-raw-directory-cached "$sourceDir/core" "$precompileDir/00.core.sh"
 compile-commands-directory-cached "$sourceDir/commands" "$precompileDir/01.commands.sh"
 compile-raw-directory-cached "$sourceDir/configs" "$precompileDir/02.configs.sh"
 compile-raw-directory-cached "$sourceDir/runtime" "$precompileDir/03.runtime.sh"

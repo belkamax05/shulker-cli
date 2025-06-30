@@ -25,27 +25,29 @@ bundle-all-files() {
     touch "$bundlePath" #? Create the bundle file if it doesn't exist
     each-sh-recursive "$distDir/precompile" "precompile-bundler-mapper"
     echo "$allHashesConcat" > "$bundlePath.hash"
-    echo-success "$prefix $msg"
+    echo-success "$prefix Compiling bundle due to $(format-args "$msg")."
     trace-add "$prefix $msg completed"
     SHU_BUNDLE_UPDATED=true
 }
 
 local currentHashName="$bundlePath.hash"
 if [[ ! -f "$bundlePath" ]]; then
-    bundle-all-files "bundle not found."
+    bundle-all-files "bundle not found"
     return $CODE_SUCCESS
 fi
 if [[ ! -f "$currentHashName" ]]; then
-    bundle-all-files "hash not found."
+    bundle-all-files "hash not found"
     return $CODE_SUCCESS
 fi
 local currentHash=$(cat "$currentHashName")
 if [[ -z "$currentHash" ]]; then
-    bundle-all-files "hash is empty."
+    bundle-all-files "hash is empty"
     return $CODE_SUCCESS
 fi
 if [[ $currentHash != $allHashesConcat ]]; then
-    bundle-all-files "hash mismatch for $(format-args "$bundlePath"). Old hash: $(format-args "$currentHash"), new hash: $(format-args "$allHashesConcat")"
+    local suffix=""
+    is-verbose && suffix=". Old hash: $(format-args "$currentHash"), new hash: $(format-args "$allHashesConcat")"
+    bundle-all-files "hash mismatch${STYLE_RESET} for $(format-args "$bundlePath")$suffix"
     return $CODE_SUCCESS
 fi
 

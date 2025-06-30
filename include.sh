@@ -13,7 +13,7 @@ if [[ -n "$SHU_LAST_INCLUDE_TIME" ]]; then
     current_time=$(get-time-ms)
     elapsed_time=$(($current_time - $SHU_LAST_INCLUDE_TIME))
     if [[ $elapsed_time -lt 2000 ]]; then
-        trace-add "$prefix ${COLOR_SUCCESS}Shulker CLI already included in the last 2 seconds${STYLE_RESET}"
+        trace-add "$(format-success "Shulker CLI already included $(format-args "$elapsed_time")$(format-success "ms ago")")"
         SHU_SKIP_INCLUDE=true
     fi
 fi
@@ -25,14 +25,17 @@ if [[ $SHU_SKIP_INCLUDE == false ]]; then
         trace-add "$prefix Shulker bundle included from cache"
     else
         #? sources essentials needed for compilation below
-        source "$SHULKER_DIR/commands/shu/shulker-raw.sh"
+        # source "$SHULKER_DIR/core-minimal.sh"
+        find "$SHULKER_DIR/core" -type f -name "*.sh" -print0 | sort -z | while IFS= read -r -d $'\0' file; do
+            echo "Sourcing $file for the first time"
+            source "$file"
+        done
+        source-core-minimal
         prefix=$(format-cmd 'include')
+        trace-add "$prefix Shulker bundle included from raw source"
     fi
 fi
 
-
-
-create-folder "$SHULKER_DIST"
 precompile-repo-root "$SHULKER_DIR" "$SHULKER_DIST"
 compile-precompiled-bundle "$SHULKER_DIST" "$SHULKER_BUNDLE_PATH"
 
@@ -40,5 +43,5 @@ if [[ $SHU_BUNDLE_UPDATED == true ]]; then
     source "$SHULKER_BUNDLE_PATH"
 fi
 
-trace-add "$prefix ${COLOR_SUCCESS}Shulker CLI started${STYLE_RESET}"
+trace-add "$prefix $(format-success 'Shulker CLI started')"
 SHU_LAST_INCLUDE_TIME=$(get-time-ms)
