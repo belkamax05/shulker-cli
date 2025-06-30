@@ -30,7 +30,7 @@ if [[ $SHU_SKIP_INCLUDE == false ]]; then
             echo "Sourcing $file for the first time"
             source "$file"
         done
-        source-core-minimal
+        core-load-from-source
         prefix=$(format-cmd 'include')
         trace-add "$prefix Shulker bundle included from raw source"
     fi

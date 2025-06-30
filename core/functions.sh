@@ -1,6 +1,3 @@
-__CURRENT_FILE=${(%):-%N}
-__CURRENT_DIR=$(realpath $(dirname $__CURRENT_FILE))
-
 each-sh-recursive() {
     local root_dir="$1"
     local command="$2"
@@ -37,7 +34,7 @@ source-commands-directory() {
     each-sh-recursive "$sourceDir" "source-commands-directory-mapper"
 }
 
-source-core-minimal() {
+core-load-from-source() {
     for cmdDir in \
         "helpers" \
         "shu" \
