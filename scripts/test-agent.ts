@@ -5,6 +5,11 @@ const agent = new Agent({
   instructions: 'You are a helpful assistant',
 });
 
-run(agent, 'Write a haiku about recursion in programming.').then((result) =>
+const prompt = 'Write a haiku about recursion in programming.'
+
+console.log(`Q: ${prompt}`);
+console.log('A:');
+
+run(agent, prompt).then((result) =>
   console.log(result.finalOutput),
 );
