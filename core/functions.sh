@@ -43,3 +43,4 @@ core-load-from-source() {
     done
     source-raw-directory "$SHULKER_DIR/configs"
 }
+

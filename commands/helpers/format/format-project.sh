@@ -1,3 +1,1 @@
-local receivedValue="$1"
-local outputValue="${COLOR_MAGENTA}${STYLE_BOLD}[$receivedValue]${STYLE_RESET}"
-echo "$outputValue"
+format-color-bold "$COLOR_MAGENTA" "$1"

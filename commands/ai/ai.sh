@@ -1,1 +1,0 @@
-echo "AI (TODO1): $@"

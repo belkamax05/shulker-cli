@@ -1,0 +1,1 @@
+format-color "$1" "${STYLE_BOLD}$2${STYLE_RESET}"

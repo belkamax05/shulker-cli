@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "gh": "gh",
-    "test-agent": "ts-node -O '{\"module\": \"commonjs\"}' -r tsconfig-paths/register ./scripts/test-agent.ts"
+    "gh": "gh"
   },
   "keywords": [],
   "author": "",

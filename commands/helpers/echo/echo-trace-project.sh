@@ -1,0 +1,1 @@
+trace-add "$(format-success 'Success') importing \"$(format-color-bold "$COLOR_DARK_MAGENTA" "$1")\" from $(format-args "$2")"

@@ -1,7 +1,8 @@
 #? Source this file from your .zshrc
 __CURRENT_FILE=${(%):-%N}
+__CURRENT_DIR=$(realpath $(dirname $__CURRENT_FILE))
 # #! Essentials for Shulker CLI
-SHULKER_DIR=$(realpath $(dirname $__CURRENT_FILE))
+SHULKER_DIR=$__CURRENT_DIR
 SHULKER_DIST="$SHULKER_DIR/.shulker"
 SHULKER_BUNDLE_PATH="$SHULKER_DIST/shulker.sh"
 # #! Essentials end
@@ -43,5 +44,5 @@ if [[ $SHU_BUNDLE_UPDATED == true ]]; then
     source "$SHULKER_BUNDLE_PATH"
 fi
 
-trace-add "$prefix $(format-success 'Shulker CLI started')"
 SHU_LAST_INCLUDE_TIME=$(get-time-ms)
+echo-trace-project "shulker-cli" "$__CURRENT_DIR"
