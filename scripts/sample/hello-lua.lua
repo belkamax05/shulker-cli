@@ -1,1 +1,2 @@
-print("Hello from LUA file")
+local args = { ... }
+print("Hello from LUA file. Args: " .. table.concat(args, ", "))

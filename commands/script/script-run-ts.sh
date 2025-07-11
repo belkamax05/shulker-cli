@@ -1,0 +1,5 @@
+local prefix="$(format-cmd "script-run-ts")"
+local scriptPath="$1"
+shift
+echo-debug "$prefix Running TypeScript script $(format-args "$scriptPath") with args: $(format-args "$@")"
+x-ts-node "$scriptPath" $@

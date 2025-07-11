@@ -20,7 +20,6 @@ if [[ -d "$currentDir/$currentCmd" ]]; then
     return $?
 else
     echo-debug "$prefix Directory does not exist: $cmdDirFormatted, running as command file"
-    # echo-debug "$prefix Running command: $currentCmd $restArgs"
-    shu-run-script "$currentDir" "$currentCmd" "$restArgs"
+    script-run "$currentDir/$currentCmd" "$restArgs"
     return $?
 fi
