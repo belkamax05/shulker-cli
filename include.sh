@@ -26,11 +26,7 @@ if [[ $SHU_SKIP_INCLUDE == false ]]; then
         trace-add "$prefix Shulker bundle included from cache"
     else
         #? sources essentials needed for compilation below
-        # source "$SHULKER_DIR/core-minimal.sh"
-        find "$SHULKER_DIR/core" -type f -name "*.sh" -print0 | sort -z | while IFS= read -r -d $'\0' file; do
-            echo "Sourcing $file for the first time"
-            source "$file"
-        done
+        source "$SHULKER_DIR/commands/_core/-functions.sh"
         core-load-from-source
         prefix=$(format-cmd 'include')
         trace-add "$prefix Shulker bundle included from raw source"

@@ -1,0 +1,22 @@
+local scriptsDir="$SHULKER_DIR/scripts"
+local currentCmd=$1
+shift 1
+local prefix="$(format-cmd "shu-run")"
+
+echo-debug "$prefix First arg: $currentCmd"
+echo-debug "$prefix Rest args: $@"
+
+local scriptCurrentDir="$scriptsDir/$currentCmd"
+local scriptCurrentDirFormatted=$(format-args "$scriptCurrentDir")
+
+# if directory exists in "scriptsDir" with name "currentCmd", then call "shu-run-at" with arguments "$scriptsDir/$currentCmd" and "$restArgs"
+if [[ -d "$scriptCurrentDir" ]]; then
+    echo-debug "$prefix Directory exists: $scriptCurrentDirFormatted, args: $(format-args "$@")"
+    shu-run-at $scriptCurrentDir $@
+    return $?
+else
+    echo-debug "$prefix Directory does not exist: $scriptCurrentDirFormatted, running as command file"
+    echo-debug "$prefix Running command: $currentCmd $restArgs"
+    shu-run-at $scriptsDir $currentCmd $@
+    return $?
+fi

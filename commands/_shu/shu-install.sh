@@ -1,0 +1,1 @@
+shu run install "$@"

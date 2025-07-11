@@ -1,0 +1,6 @@
+if ! command-exists ts-node; then
+    echo-debug "Installing ts-node globally"
+    x-npm install -g ts-node
+fi
+ts-node $@
+return $?
