@@ -1,1 +1,4 @@
+# if [[ $IS_ZSHENV == true ]]; then
+#     return 1
+# fi
 [[ $WATCH == true ]]
