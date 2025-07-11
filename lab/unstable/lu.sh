@@ -1,0 +1,1 @@
+lua "$SHULKER_DIR/lu-test.lua" "$@"
