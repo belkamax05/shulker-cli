@@ -1,5 +1,0 @@
-if ! command-exists lua; then
-    x-brew install lua luarocks
-fi
-lua $@
-return $?

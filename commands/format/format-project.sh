@@ -1,1 +1,0 @@
-format-color-bold "$COLOR_MAGENTA" "$1"

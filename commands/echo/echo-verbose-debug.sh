@@ -1,1 +1,0 @@
-is-verbose && echo-debug "$(format-cmd "verbose") $@"

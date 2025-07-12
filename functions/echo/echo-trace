@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+is-trace && echo "$(format-cmd "trace") $1"

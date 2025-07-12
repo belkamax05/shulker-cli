@@ -1,1 +1,0 @@
-echo $(color-rgb $(hex-to-rgb $1))

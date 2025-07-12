@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+if ! command-exists brew; then
+fi
+brew $@
+return $?

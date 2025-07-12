@@ -1,1 +1,0 @@
-is-trace && echo "$(format-cmd "trace") $1"

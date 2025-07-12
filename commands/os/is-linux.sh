@@ -1,1 +1,0 @@
-[[ "$(get-uname)" == "Linux" ]]

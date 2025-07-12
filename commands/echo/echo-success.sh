@@ -1,1 +1,0 @@
-echo "$(format-success '✅ Success:') $@"

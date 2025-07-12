@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+command -v "$1" &> /dev/null

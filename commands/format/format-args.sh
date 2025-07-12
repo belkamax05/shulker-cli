@@ -1,1 +1,0 @@
-format-color "$COLOR_ARGS" "$1"

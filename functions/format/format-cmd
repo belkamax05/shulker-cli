@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+format-color-bold "$COLOR_CYAN" "[$1]"

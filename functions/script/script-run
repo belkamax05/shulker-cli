@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+(
+
+    local currentCmd=$1
+    shift 1
+
+    local prefix="$(format-cmd "shu-run-script")"
+
+    local currentCmdFormatted=$(format-args "$currentCmd")
+    local restArgsFormatted=$(format-args "$@")
+
+    echo-debug "$prefix Current dir: $currentDirFormatted"
+    echo-debug "$prefix Current command: $currentCmdFormatted"
+    echo-debug "$prefix Rest args: $restArgsFormatted"
+
+    local returnCode=$CODE_NOT_FOUND
+
+    for ext in sh zsh lua ts; do
+        script-run-by-extension "$ext" "$currentCmd" "$@"
+        returnCode=$?
+        if [[ $returnCode -ne $CODE_NOT_FOUND ]]; then
+            return $returnCode
+        fi
+    done
+
+    return $CODE_NOT_FOUND
+)

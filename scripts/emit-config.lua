@@ -1,6 +1,5 @@
 local config = require("config")
 
-
 local function flatten(tbl, prefix)
     for k, v in pairs(tbl) do
         local key = prefix and (prefix .. "_" .. k) or k
