@@ -1,1 +1,0 @@
-clear && exec zsh

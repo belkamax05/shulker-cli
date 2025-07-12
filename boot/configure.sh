@@ -1,7 +1,7 @@
 __PREFIX="$(format-cmd 'configure')"
 
 # Define configuration tasks
-CONFIG_TASKS=("exports" "brew" "alias" "zap" "autosuggestions" "autoload" "paths" "fzf" "prompt")
+CONFIG_TASKS=("exports" "brew" "alias" "zap" "nvm" "autosuggestions" "autoload" "paths" "fzf" "prompt")
 
 # Execute each configuration task
 for configureTask in "${CONFIG_TASKS[@]}"; do

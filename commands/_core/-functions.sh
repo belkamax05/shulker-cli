@@ -7,10 +7,6 @@ each-sh-recursive() {
     done
 }
 
-is-command-unwrapped() {
-    local command_name="$1"
-    [[ $command_name == -* ]] && return 0 || return 1
-}
 
 source-commands-directory-mapper() {
     local file="$1"

@@ -23,4 +23,3 @@ shu-run() {
         return $?
     fi
 }
-shu-run "$@"

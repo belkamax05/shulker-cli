@@ -12,4 +12,3 @@ shu() {
     fi
     eval "$shuCmdFunction" "$@"
 }
-shu "$@"

@@ -1,3 +1,0 @@
-local sourceDir="$1"
-is-linux && find $sourceDir -type f -exec stat --format="%Y %n" {} + | sort -n | tail -1 | cut -d' ' -f2-
-is-macos && find $sourceDir -type f -exec stat -f "%m %N" {} + | sort -n | tail -1 | cut -d' ' -f2-

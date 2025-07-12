@@ -1,0 +1,58 @@
+#!/usr/bin/env zsh
+compile-precompiled-bundle() {
+
+    local distDir=$1
+    local bundlePath=$2
+    local prefix="$(format-cmd 'compile-precompiled-bundle')"
+
+    local allHashesConcat=""
+    precompile-fileHash-mapper() {
+        local filePath="$1"
+        local hashFilePath=$filePath.hash
+        echo-debug "$prefix Add hash for bundle: $(format-args "$filePath")"
+        local fileHash=$(cat "$hashFilePath")
+        allHashesConcat+="$fileHash"
+    }
+    each-sh-recursive "$distDir/precompile" "precompile-fileHash-mapper"
+
+    precompile-bundler-mapper() {
+        local filePath="$1"
+        echo-debug "$prefix Add file to bundle: $(format-args "$filePath")"
+        local content="$(cat "$filePath")"
+        # allFilesConcat+="$content"
+        echo "$content" >> "$bundlePath"
+    }
+    bundle-all-files() {
+        local msg=$1
+        rm -f "$bundlePath" #? Clear the bundle file
+        touch "$bundlePath" #? Create the bundle file if it doesn't exist
+        each-sh-recursive "$distDir/precompile" "precompile-bundler-mapper"
+        echo "$allHashesConcat" > "$bundlePath.hash"
+        echo-success "$prefix Compiling bundle due to $(format-args "$msg")."
+        trace-add "$prefix $msg completed"
+        SHU_BUNDLE_UPDATED=true
+    }
+
+    local currentHashName="$bundlePath.hash"
+    if [[ ! -f "$bundlePath" ]]; then
+        bundle-all-files "bundle not found"
+        return $CODE_SUCCESS
+    fi
+    if [[ ! -f "$currentHashName" ]]; then
+        bundle-all-files "hash not found"
+        return $CODE_SUCCESS
+    fi
+    local currentHash=$(cat "$currentHashName")
+    if [[ -z "$currentHash" ]]; then
+        bundle-all-files "hash is empty"
+        return $CODE_SUCCESS
+    fi
+    if [[ $currentHash != $allHashesConcat ]]; then
+        local suffix=""
+        is-verbose && suffix=". Old hash: $(format-args "$currentHash"), new hash: $(format-args "$allHashesConcat")"
+        bundle-all-files "hash mismatch${STYLE_RESET} for $(format-args "$bundlePath")$suffix"
+        return $CODE_SUCCESS
+    fi
+
+    trace-add "$prefix bundle is compiled"
+}

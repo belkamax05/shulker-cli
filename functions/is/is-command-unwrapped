@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+is-command-unwrapped() {
+    local command_name="$1"
+    [[ $command_name == -* ]] && return 0 || return 1
+}
