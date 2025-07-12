@@ -40,7 +40,6 @@ precompile-repo-root "$SHULKER_DIR" "$SHULKER_DIST"
 compile-precompiled-bundle "$SHULKER_DIST" "$SHULKER_BUNDLE_PATH"
 
 if [[ $SHU_BUNDLE_UPDATED == true ]]; then
-    echo "BUNDLE UPDATED"
     source "$SHULKER_BUNDLE_PATH"
 fi
 
