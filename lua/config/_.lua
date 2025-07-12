@@ -3,8 +3,8 @@ local verbose = false
 local trace = true
 local watch = true
 
-local paths = require("paths")
-local colors = require("colors")
+local paths = require("config/paths")
+local colors = require("config/colors")
 
 local debug_print = {
     paths = paths,

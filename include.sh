@@ -5,9 +5,20 @@ __CURRENT_DIR=$(realpath $(dirname $__CURRENT_FILE))
 SHULKER_DIR=$__CURRENT_DIR
 SHULKER_DIST="$SHULKER_DIR/.shulker"
 SHULKER_BUNDLE_PATH="$SHULKER_DIST/shulker.sh"
+SHULKER_CONFIG_PATH="$SHULKER_DIST/config.sh"
 # #! Essentials end
 SHU_BUNDLE_UPDATED=false
 SHU_SKIP_INCLUDE=false
+
+export LUA_PATH="$SHULKER_DIR/lua/?.lua;"
+
+fpath+=("$SHULKER_DIR/functions")
+for dir in $SHULKER_DIR/functions/**/*(/); do
+    echo "Adding $dir to fpath"
+  fpath+=("$dir")
+done
+autoload -Uz fun-hi
+autoload -Uz fun-nes
 
 #if SHU_LAST_TRACE_TIME defined
 if [[ -n "$SHU_LAST_INCLUDE_TIME" ]]; then
@@ -21,6 +32,7 @@ fi
 
 if [[ $SHU_SKIP_INCLUDE == false ]]; then
     if [[ -f "$SHULKER_BUNDLE_PATH" ]]; then
+        source "$SHULKER_CONFIG_PATH"
         source "$SHULKER_BUNDLE_PATH"
         prefix=$(format-cmd 'include')
         trace-add "$prefix Shulker bundle included from cache"
@@ -33,10 +45,13 @@ if [[ $SHU_SKIP_INCLUDE == false ]]; then
     fi
 fi
 
+shu emit-config > "$SHULKER_DIST/config.sh"
 precompile-repo-root "$SHULKER_DIR" "$SHULKER_DIST"
 compile-precompiled-bundle "$SHULKER_DIST" "$SHULKER_BUNDLE_PATH"
 
 if [[ $SHU_BUNDLE_UPDATED == true ]]; then
+    echo "BUNDLE UPDATED"
+    source "$SHULKER_CONFIG_PATH"
     source "$SHULKER_BUNDLE_PATH"
 fi
 

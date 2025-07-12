@@ -1,0 +1,1 @@
+echo "$SHU_DEBUG_PRINT_COLORS_TEST_CC hi"
