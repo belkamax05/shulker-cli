@@ -10,13 +10,7 @@ echo-debug "$prefix Precompiling repository from $sourceDirFormatted to $distDir
 local precompileDir="$distDir/precompile"
 
 create-folder "$distDir"
-# create-folder "$precompileDir"
-# (
-#     cd "$sourceDir/configs"
-#     shu run emit-config > "$precompileDir/00.config.sh"
-#     echo "STATIC_HASH" > "$precompileDir/00.config.sh.hash"
-# )
 compile-commands-directory-cached "$sourceDir/commands" "$precompileDir/01.commands.sh"
-compile-raw-directory-cached "$sourceDir/runtime" "$precompileDir/03.runtime.sh"
+compile-raw-directory-cached "$sourceDir/runtime" "$precompileDir/02.runtime.sh"
 
 trace-add "$prefix Precompile from $sourceDirFormatted to $distDirFormatted done"

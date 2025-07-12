@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-(
+script-run-by-extension() {
     local prefix="$(format-cmd "script-run-by-extension")"
     local ext="$1"
     local pathToCmd="$2"
@@ -16,4 +16,5 @@
         return $?
     fi
     return $CODE_NOT_FOUND
-)
+}
+script-run-by-extension $@
