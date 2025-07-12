@@ -1,0 +1,5 @@
+if ! command -v "$1" &> /dev/null; then
+    return $CODE_ERROR
+else
+    return $CODE_OK
+fi

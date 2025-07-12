@@ -1,9 +1,4 @@
-local sourceDir="$1"
-local targetFile="$2"
-local targetFileDir=$(dirname "$targetFile")
-
-local prefix="$(format-cmd 'source-raw-directory')"
-
+#!/usr/bin/env zsh
 source-raw-directory-mapper() {
     local file="$1"
     if [[ -f "$file" ]]; then
@@ -13,6 +8,3 @@ source-raw-directory-mapper() {
         trace-add "$prefix Sourced file $fileNameFormatted"
     fi
 }
-
-each-sh-recursive "$sourceDir" "source-raw-directory-mapper"
-trace-add "$prefix Sourced dir $(format-args "$sourceDir")"

@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 if ! command-exists gum; then
     x-brew install gum
 fi

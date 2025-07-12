@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+source-commands-directory() {
+    local sourceDir="$1"
+    local targetFile="$2"
+    local targetFileDir=$(dirname "$targetFile")
+
+    local prefix="$(format-cmd 'source-commands-directory')"
+    local sourceDirFormatted=$(format-args "$sourceDir")
+
+    each-sh-recursive "$sourceDir" "source-commands-directory-mapper"
+    echo-debug "$prefix Sourced dir $sourceDirFormatted"
+    trace-add "$prefix Sourced dir $sourceDirFormatted"
+}

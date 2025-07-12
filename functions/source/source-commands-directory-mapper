@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+source-commands-directory-mapper() {
+    local file="$1"
+    if [[ -f "$file" ]]; then
+        local command_name=$(basename "$file" .sh)
+        local fileContent=$(cat "$file")
+        if is-command-unwrapped "$command_name"; then
+            eval "$fileContent"
+        else
+            eval "${command_name}() {
+    $fileContent
+}"
+        fi
+    fi
+}

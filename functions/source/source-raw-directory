@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+source-raw-directory() {
+    local sourceDir="$1"
+    local prefix="$(format-cmd 'source-raw-directory')"
+
+    each-sh-recursive "$sourceDir" "source-raw-directory-mapper"
+    trace-add "$prefix Sourced dir $(format-args "$sourceDir")"
+}

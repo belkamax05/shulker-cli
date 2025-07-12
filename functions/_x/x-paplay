@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 if ! command-exists paplay; then
     sudo apt install pulseaudio-utils
 fi
