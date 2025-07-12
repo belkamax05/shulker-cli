@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-(
+shu-run-at() {
     local prefix="$(format-cmd "shu-run-at")"
 
     echo-debug "$prefix All args: $@"
@@ -25,4 +25,5 @@
         script-run "$currentDir/$currentCmd" "$restArgs"
         return $?
     fi
-)
+}
+shu-run-at "$@"

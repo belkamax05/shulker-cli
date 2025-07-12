@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
-(
-
+script-run() {
     local currentCmd=$1
     shift 1
 
@@ -24,4 +23,5 @@
     done
 
     return $CODE_NOT_FOUND
-)
+}
+script-run "$@"

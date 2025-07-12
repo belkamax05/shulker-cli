@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-format-color "$COLOR_ARGS" "$1"
+format-color "$COLOR_ARGS$@"

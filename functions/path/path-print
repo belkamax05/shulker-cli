@@ -1,1 +1,2 @@
+#!/usr/bin/env zsh
 echo "$PATH" | tr ':' '\n' | sed 's/^/  /' | sed 's/^/  /'

@@ -1,0 +1,1 @@
+echo "test-cmd OK"

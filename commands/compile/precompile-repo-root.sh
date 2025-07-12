@@ -17,7 +17,6 @@ create-folder "$distDir"
 #     echo "STATIC_HASH" > "$precompileDir/00.config.sh.hash"
 # )
 compile-commands-directory-cached "$sourceDir/commands" "$precompileDir/01.commands.sh"
-compile-raw-directory-cached "$sourceDir/configs" "$precompileDir/02.configs.sh"
 compile-raw-directory-cached "$sourceDir/runtime" "$precompileDir/03.runtime.sh"
 
 trace-add "$prefix Precompile from $sourceDirFormatted to $distDirFormatted done"

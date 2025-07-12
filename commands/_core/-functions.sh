@@ -36,5 +36,4 @@ source-commands-directory() {
 
 core-load-from-source() {
     source-commands-directory "$SHULKER_DIR/commands"
-    source-raw-directory "$SHULKER_DIR/configs"
 }

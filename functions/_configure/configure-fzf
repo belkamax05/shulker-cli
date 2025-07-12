@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # # Feed the output of fd into fzf
 # fd --type f --strip-cwd-prefix | fzf
 
