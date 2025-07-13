@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 git pull
 repo save
-repo sync --push
+confirm-command "repo sync --push"
