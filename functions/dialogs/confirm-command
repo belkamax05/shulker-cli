@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+confirm-command() {
+    local command="$@"
+    local prefix="$(format-cmd "confirm-command")"
+    gum confirm "$prefix Execute command '$(format-args "$command")'?" || {
+        echo-info "$prefix Command '$(format-args "$command")' was not confirmed."
+        return $CODE_NOT_FOUND
+    }
+    echo-debug "$prefix Command '$(format-args "$command")' was confirmed."
+    eval "$command"
+    local returnCode=$?
+    if [[ $returnCode -ne 0 ]]; then
+        echo-error "$prefix Command '$(format-args "$command")' failed with return code $returnCode."
+    else
+        echo-success "$prefix Command '$(format-args "$command")' executed successfully."
+    fi
+    return $returnCode
+}
