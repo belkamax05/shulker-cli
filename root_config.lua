@@ -1,6 +1,6 @@
 local debug = false
 local verbose = false
-local trace = false
+local trace = true
 local watch = true
 
 return {
