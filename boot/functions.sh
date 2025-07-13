@@ -13,4 +13,4 @@ for file in $SHULKER_DIR/functions/**/*(N-.); do
 done
 
 SHU_START_TIME=$(get-time-ms)
-SHU_LAST_TRACE_TIME=$SHU_START_TIME
+# SHU_LAST_TRACE_TIME=$SHU_START_TIME
