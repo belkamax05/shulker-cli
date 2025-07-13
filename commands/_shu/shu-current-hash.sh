@@ -1,1 +1,1 @@
-get-directory-updated-token "$SHULKER_DIR"
+# directory-update-time "$SHULKER_DIR"

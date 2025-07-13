@@ -26,7 +26,7 @@ compile-raw-directory-cached() {
     if is-watch; then
         if [[ -f "$hashFile" ]]; then
             local previousHash=$(cat "$hashFile")
-            local currentHash=$(get-directory-updated-token "$sourceDir")
+            local currentHash=$(directory-update-time "$sourceDir")
             if [[ "$currentHash" != "$previousHash" ]]; then
                 compile-raw-directory "$sourceDir" "$targetFile"
                 save-compiled-directory-hash "$sourceDir" "$targetFile"

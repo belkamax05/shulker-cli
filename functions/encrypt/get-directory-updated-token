@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-get-directory-last-file-updated-time $@

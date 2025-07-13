@@ -8,7 +8,16 @@ not-found-process() {
     shift 1
     local prefix="$(format-cmd "not-found-process")"
 
-    #? cehck if can be run as script, and if not-found returned, continue looking forward
+    #? check if can be run as script at scripts folder
+    local returnCode=$CODE_NOT_FOUND
+    script-run "$SHULKER_DIR/scripts/$command" $@
+    returnCode=$?
+    if [[ $returnCode -ne $CODE_NOT_FOUND ]]; then
+        echo-debug "$prefix Command $(format-cmd "$command") found and executed successfully."
+        return $returnCode
+    fi
+
+    #? check if can be run as script at current directory
     local returnCode=$CODE_NOT_FOUND
     script-run "$PWD/$command" $@
     returnCode=$?

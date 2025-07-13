@@ -15,6 +15,6 @@ script-run-by-extension() {
         $runner "$pathToCmd.$ext" "$@"
         return $?
     fi
+    echo-debug "$prefix Script $(format-args "$ext") at $(format-args "$pathToCmd") not found."
     return $CODE_NOT_FOUND
 }
-script-run-by-extension $@

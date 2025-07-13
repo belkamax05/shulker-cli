@@ -29,7 +29,7 @@ compile-commands-directory-cached() {
         if [[ -f "$hashFile" ]]; then
             local previousHash=$(cat "$hashFile")
             echo-debug "$prefix Previous hash for $sourceDirFormatted: $previousHash"
-            local currentHash=$(get-directory-updated-token "$sourceDir")
+            local currentHash=$(directory-update-time "$sourceDir")
             echo-debug "$prefix Current hash for $sourceDirFormatted: $currentHash"
             if [[ "$currentHash" != "$previousHash" ]]; then
                 compile-commands-directory "$sourceDir" "$targetFile"

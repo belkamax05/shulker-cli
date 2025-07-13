@@ -1,1 +1,0 @@
-source "$SHULKER_BUNDLE_PATH"

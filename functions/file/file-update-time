@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-get-file-updated-time() {
+file-update-time() {
   local filePath="$1"
   if [ -z "$filePath" ]; then
     echo "Error: No file path provided."

@@ -23,13 +23,13 @@ link-directory-recursive-cached() {
     if [[ ! -f "$cacheFilePath" ]]; then
         echo-debug "$prefix Cache file not found. Running linking."
         link-directory-recursive "$directoryFrom" "$directoryTo" "$@"
-        echo "$(get-directory-updated-token "$directoryFrom")" > "$cacheFilePath"
+        echo "$(directory-update-time "$directoryFrom")" > "$cacheFilePath"
         trace-add "$prefix Cache file created at $cacheFilePathFormatted"
         return $CODE_SUCCESS
     fi
 
     local savedHash=$(cat "$cacheFilePath")
-    local currentHash=$(get-directory-updated-token "$directoryFrom")
+    local currentHash=$(directory-update-time "$directoryFrom")
     if [[ "$currentHash" != "$savedHash" ]]; then
         echo-debug "$prefix Cache file hash does not match current hash. Running linking."
         link-directory-recursive "$directoryFrom" "$directoryTo" "$@"
