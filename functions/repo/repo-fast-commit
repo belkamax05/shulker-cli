@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 local message=$1
 local preffix="$(format-cmd 'repo-fast-commit')"
 if [[ -z "$message" ]]; then

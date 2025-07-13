@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 echo-info "Directory: ${COLOR_ARGUMENT}$(pwd)${STYLE_RESET}"
 echo-info "Repo user: ${COLOR_ARGUMENT}$(repo current-user)${STYLE_RESET}"
 echo-info "Global user: ${COLOR_ARGUMENT}$(repo current-user --global)${STYLE_RESET}"

@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+repo-unstaged-count() {
+    local output=$(repo unstaged)
+    if [[ -z "$output" ]]; then
+        echo "0"
+    else
+        echo "$output" | wc -l
+    fi
+}

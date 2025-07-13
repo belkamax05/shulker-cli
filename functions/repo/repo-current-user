@@ -1,1 +1,2 @@
+#!/usr/bin/env zsh
 echo "$(repo current-user-name $@) <$(repo current-user-email $@)>"

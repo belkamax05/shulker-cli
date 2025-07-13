@@ -1,1 +1,2 @@
+#!/usr/bin/env zsh
 git ls-files --others --exclude-standard

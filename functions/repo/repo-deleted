@@ -1,1 +1,2 @@
+#!/usr/bin/env zsh
 git diff --diff-filter=D --name-only

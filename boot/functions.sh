@@ -11,3 +11,6 @@ for file in $SHULKER_DIR/functions/**/*(N-.); do
     funcname=${file:t}  # get filename without path
     autoload -Uz "$funcname"
 done
+
+SHU_START_TIME=$(get-time-ms)
+SHU_LAST_TRACE_TIME=$SHU_START_TIME

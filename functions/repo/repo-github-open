@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+repo-github-open() {
+    local url=$(repo github-open-url "$@")
+    open "$url" || {
+        echo "Failed to open URL: $url"
+        return $CODE_ERROR
+    }
+}

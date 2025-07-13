@@ -1,4 +1,4 @@
-local debug = false
+local debug = true
 local verbose = false
 local trace = false
 local watch = true
