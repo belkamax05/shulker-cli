@@ -1,7 +1,7 @@
 local debug = false
 local verbose = false
-local trace = true
-local watch = true
+local trace = false
+local watch = false
 
 return {
     debug = debug,
