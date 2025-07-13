@@ -5,5 +5,5 @@ repo-save() {
         local newMessage=$(x-gum input --placeholder "Enter commit message")
         commitMessage=$newMessage
     fi
-    git commit -m "$commitMessage" --no-verify
+    confirm-command "git commit -m \"$commitMessage\" --no-verify"
 }
