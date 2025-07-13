@@ -1,9 +1,21 @@
 #!/usr/bin/env zsh
 repo-save() {
+    local stagedCount=$(repo staged-count)
+    if [[ $stagedCount -eq 0 ]]; then
+        echo-error "No files staged for commit. Please stage files before saving."
+        return $CODE_ERROR
+    fi
+
     local commitMessage=$1
     if [[ -z "$commitMessage" ]]; then
         local newMessage=$(x-gum input --placeholder "Enter commit message")
         commitMessage=$newMessage
     fi
+    if [[ -z "$commitMessage" ]]; then
+        echo-error "Commit message cannot be empty."
+        return $CODE_ERROR
+    fi
+
+
     confirm-command "git commit -m \"$commitMessage\" --no-verify"
 }
