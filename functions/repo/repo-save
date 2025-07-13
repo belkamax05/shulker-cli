@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+repo-save() {
+    local commitMessage=$1
+    if [[ -z "$commitMessage" ]]; then
+        local newMessage=$(x-gum input --placeholder "Enter commit message")
+        commitMessage=$newMessage
+    fi
+    git commit -m "$commitMessage" --no-verify
+}
