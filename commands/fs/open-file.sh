@@ -1,6 +1,0 @@
-local appName=$(gum choose "cat" "code" "nano")
-#"subl" "atom" "vim" "gedit" "mousepad" "pluma" "kate" "kwrite" "geany" "leaf"
-if [ -n "$appName" ]; then
-    $appName "$(gum file $PWD --height=10)"
-fi
-# echo "$(gum file $PWD)"

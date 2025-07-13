@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 echo "Current user: $(whoami)"
 echo "Current group: $(id -gn)"
 if [[ $(id -Gn | grep -c admin) -eq 0 ]]; then
