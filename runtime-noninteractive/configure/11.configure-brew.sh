@@ -13,3 +13,4 @@ configure-brew() {
         trace-add "$prefix Brew was already loaded"
     fi
 }
+configure-brew

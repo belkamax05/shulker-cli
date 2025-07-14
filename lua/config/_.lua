@@ -2,7 +2,7 @@ local paths = require("config/paths")
 local colors = require("config/colors")
 local style = require("config/style")
 local code = require("config/code")
-local root_config = dofile(paths.root .. "/root_config.lua")
+local root_config = dofile(paths.root .. "/config.lua")
 
 local debug_print = {}
 

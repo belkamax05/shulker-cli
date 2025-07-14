@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+source-directory-recursive() {
+    local srcDir="$1"
+    local srcDirFormatted=$(format-args "$srcDir")
+    if [[ -d "$srcDir" ]]; then
+        echo-debug "Recursively sourcing $srcDirFormatted"
+        for file in $(find "$srcDir" -type f | sort); do
+            source "$file"
+        done
+    else
+        echo-error "Directory $srcDirFormatted does not exist."
+    fi
+}

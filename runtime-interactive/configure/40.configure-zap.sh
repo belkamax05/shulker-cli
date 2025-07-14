@@ -24,3 +24,4 @@ configure-zap() {
     # done
     trace-add "$prefix zap plugins sourced"
 }
+configure-zap

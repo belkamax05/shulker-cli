@@ -8,7 +8,7 @@ shu() {
     if ! type "$shuCmdFunction" &>/dev/null; then
         # echo-error "Command '$shuCmdFunction' not found. Please check your Shulker CLI installation."
         shu-run $currentCmd "$@"
-        return $CODE_ERROR
+        return $?
     fi
     eval "$shuCmdFunction" "$@"
 }

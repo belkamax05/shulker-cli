@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+source-directory-flat() {
+    local srcDir="$1"
+    local srcDirFormatted=$(format-args "$srcDir")
+    if [[ -d "$srcDir" ]]; then
+        echo-debug "Sourcing $srcDirFormatted"
+        for file in $(ls -1 "$srcDir" | sort); do
+            source "$srcDir/$file"
+        done
+    else
+        echo-error "Directory $srcDirFormatted does not exist."
+    fi
+}

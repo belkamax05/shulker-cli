@@ -1,27 +1,17 @@
 #? Source this file from your .zshrc
 __CURRENT_FILE=${(%):-%N}
 __CURRENT_DIR=$(realpath $(dirname $__CURRENT_FILE))
-
 SHULKER_DIR=$__CURRENT_DIR
-
-boot-source() {
-    source "$SHULKER_DIR/boot/$1.sh"
-    trace-add "Boot '$(format-args "boot/$1.sh")' completed"
+__source-directory() {
+    local srcDir="$1"
+    if [[ -d "$srcDir" ]]; then
+        for file in $(ls -1 "$srcDir" | sort); do
+            # echo "Sourcing $file from $srcDir"
+            source "$srcDir/$file"
+        done
+    else
+        echo "Directory $srcDir does not exist. (critical)"
+    fi
 }
-
-boot-zshenv() {
-    boot-source "functions"
-    local bootTasks=("lua")
-    for bootTask in "${bootTasks[@]}"; do
-        boot-source "$bootTask"
-    done
-}
-boot-zshrc() {
-    local bootTasks=("configure" "runtime")
-    for bootTask in "${bootTasks[@]}"; do
-        boot-source "$bootTask"
-    done
-}
-
-boot-zshenv
+__source-directory "$SHULKER_DIR/runtime-noninteractive"
 echo-trace-project "shulker-cli [zshenv]" "$__CURRENT_DIR"

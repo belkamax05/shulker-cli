@@ -12,4 +12,4 @@ shu test-script-lua
 shu test-lua-noext
 shu test-zsh-noext
 
-return $CODE_OK
+# return $CODE_OK

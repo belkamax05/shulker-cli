@@ -21,7 +21,7 @@ Additionally (if needed)
 ```zsh
 clone-and-source "git@github.com:belkamax05/dotfiles-public.git" "$HOME/dev/dotfiles-public" "include.sh"
 # clone-and-source "git@github.com:<your-repo>/dotfiles-private.git" "$HOME/dev/dotfiles-private" "include.sh"
-clone-and-source "git@github.com:belkamax05/shulker-prompt.git" "$HOME/dev/shulker-prompt" "include.sh"
+clone-and-source "git@github.com:belkamax05/shulker-studio.git" "$HOME/dev/shulker-studio" "include.sh"
 ```
 
 
@@ -31,4 +31,4 @@ clone-and-source "git@github.com:belkamax05/shulker-prompt.git" "$HOME/dev/shulk
 
 [dotfiles-private (PRIVATE)](https://github.com/belkamax05/dotfiles-private)
 
-[shulker-prompt](https://github.com/belkamax05/shulker-prompt)
+[shulker-studio (PRIVATE)](https://github.com/belkamax05/shulker-studio)

@@ -1,1 +1,0 @@
-source-raw-directory "$SHULKER_DIR/boot/runtime"
