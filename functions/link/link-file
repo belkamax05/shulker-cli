@@ -14,12 +14,15 @@ link-file() {
         if [[ "$pointingTo" == "$src" ]]; then
             pointingToMessage=" (already linked to $pointingToFormatted)"
         else
-            pointingToMessage=" (set to $(format-args "$destDir"))"
+            pointingToMessage=" (set to $(format-args "$dest"))"
             confirmLinking=true
         fi
     fi
-    echo-info "$prefix Linking file\n$(pad-left "from" 20 " ") $(format-args "$src")\n$(pad-left "to" 20 " ") $(format-args "$dest")\n$(pad-left " " 20 " ")$pointingToMessage"
-    if [[ "$confirmLinking" = true ]]; then
+    local message="$prefix Linking file\n$(pad-left "from" 20 " ") $(format-args "$src")\n$(pad-left "to" 20 " ") $(format-args "$dest")\n$(pad-left " " 20 " ")$pointingToMessage"
+    if [[ "$confirmLinking" == true ]]; then
         ln -sf "$src" "$dest"
+        echo-success "$message"
+    else
+        echo-info "$message"
     fi
 }

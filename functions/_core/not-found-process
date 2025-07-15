@@ -8,6 +8,13 @@ not-found-process() {
     shift 1
     local prefix="$(format-cmd "not-found-process")"
 
+    #? check if x-${command} exists
+    if command-exists "x-${command}"; then
+        echo-debug "$prefix Command $(format-cmd "x-${command}") found. Running it with args: $(format-args "$@")"
+        x-${command} $@
+        return $?
+    fi
+
     #? check if can be run as script at scripts folder
     local returnCode=$CODE_NOT_FOUND
     script-run "$SHULKER_DIR/scripts/$command" $@
