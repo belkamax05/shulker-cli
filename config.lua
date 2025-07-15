@@ -4,9 +4,9 @@ local trace = false
 local watch = false
 
 --? Uncomment the following lines to enable debugging, verbose output, or tracing
-debug = true
+-- debug = true
 -- verbose = true
-trace = true
+-- trace = true
 
 return {
     debug = debug,

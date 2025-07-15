@@ -13,7 +13,7 @@ link-file-recursive-mapper() {
 
     shift 3
 
-    echo-debug "$prefix. File: $(format-args "$filePath"). FromDir: $(format-args "$directoryFrom"), ToDir: $(format-args "$directoryTo") Rest args: $@"
+    echo "$prefix. File: $(format-args "$filePath"). FromDir: $(format-args "$directoryFrom"), ToDir: $(format-args "$directoryTo") Rest args: $@"
     
     local fromFilePath="$directoryFrom/$fromRelativePath"
     local toFilePath="$directoryTo/$fromRelativePath"
@@ -34,5 +34,4 @@ link-file-recursive-mapper() {
         fi
         return $CODE_ERROR
     fi
-
 }

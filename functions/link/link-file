@@ -6,6 +6,20 @@ link-file() {
     local dest="$2"
     local destDir="${dest:h}"
     mkdir -p "$destDir"
-    echo-info "$prefix Linking file ${COLOR_YELLOW}$src${STYLE_RESET} to ${COLOR_YELLOW}$dest${STYLE_RESET}"
-    ln -sf "$src" "$dest"
+    local pointingTo=$(link-pointing-to "$dest")
+    local pointingToMessage=""
+    local confirmLinking=false
+    if [[ -n "$pointingTo" ]]; then
+        local pointingToFormatted=$(format-args "$pointingTo")
+        if [[ "$pointingTo" == "$src" ]]; then
+            pointingToMessage=" (already linked to $pointingToFormatted)"
+        else
+            pointingToMessage=" (set to $(format-args "$destDir"))"
+            confirmLinking=true
+        fi
+    fi
+    echo-info "$prefix Linking file\n$(pad-left "from" 20 " ") $(format-args "$src")\n$(pad-left "to" 20 " ") $(format-args "$dest")\n$(pad-left " " 20 " ")$pointingToMessage"
+    if [[ "$confirmLinking" = true ]]; then
+        ln -sf "$src" "$dest"
+    fi
 }

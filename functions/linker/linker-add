@@ -3,7 +3,7 @@ linker-add() {
     local prefix=$(format-cmd "linker-add")
     local keyProp="$1"
     local valueProp="$2"
-    echo-debug "$prefix Add link $(format-args $keyProp)=$(format-args $valueProp)"
+    echo-debug "$prefix Add link $(format-args $keyProp) into $(format-args $valueProp)"
     linker_list[$keyProp]="$valueProp"
     return $CODE_OK
 }

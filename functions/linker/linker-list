@@ -4,9 +4,8 @@ linker-list() {
         echo-error "No links defined."
         return $CODE_ERROR
     fi
-    echo-info "Linker List:"
     for key in ${(k)linker_list}; do
-        echo "$key: ${linker_list[$key]}"
+        echo "$key|${linker_list[$key]}"
     done
     return $CODE_OK
 }

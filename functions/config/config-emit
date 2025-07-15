@@ -1,3 +1,2 @@
 #!/usr/bin/env zsh
-# echo "Lua at $(where x-lua)"
-eval "$(x-lua $SHULKER_DIR/lua/emit_config.lua)"
+eval "$(config-print)"

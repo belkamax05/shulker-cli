@@ -1,13 +1,4 @@
-require("../utils/color/_")
-
--- COLOR_COMMAND="$COLOR_CYAN"
--- COLOR_INFO="$COLOR_CYAN"
--- COLOR_ARGUMENT="$COLOR_YELLOW"
--- COLOR_PARAMS="$COLOR_DARK_PINK"
--- COLOR_SUCCESS="$COLOR_GREEN"
--- COLOR_ERROR="$COLOR_DARK_RED"
--- COLOR_DEBUG="$COLOR_MAGENTA"
--- COLOR_WARNING="$COLOR_DARK_ORANGE"
+require("utils/color/color_hex")
 
 local cyan = color_hex("#00ffff");
 local dark_red = color_hex("#ff3131");
@@ -28,15 +19,6 @@ local dark_orange = color_hex("#ffa500");
 local dark_pink = color_hex("#ff69b4");
 local dark_purple = color_hex("#800080");
 local dark_turquoise = color_hex("#40e0d0");
-
--- COLOR_COMMAND="$COLOR_CYAN"
--- COLOR_INFO="$COLOR_CYAN"
--- COLOR_ARGUMENT="$COLOR_YELLOW"
--- COLOR_PARAMS="$COLOR_DARK_PINK"
--- COLOR_SUCCESS="$COLOR_GREEN"
--- COLOR_ERROR="$COLOR_DARK_RED"
--- COLOR_DEBUG="$COLOR_MAGENTA"
--- COLOR_WARNING="$COLOR_DARK_ORANGE"
 
 local command = cyan;
 local info = cyan;
