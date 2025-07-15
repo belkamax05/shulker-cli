@@ -13,10 +13,8 @@ link-file-recursive-mapper() {
 
     shift 3
 
-    echo-verbose-debug "$prefix. File: $(format-args "$fromRelativePath"), Dir: $(format-args "$fileDir"). Rest args: $@"
-
-    echo-verbose-debug "$prefix FromDir: $(format-args "$directoryFrom"), ToDir: $(format-args "$directoryTo")"
-
+    echo-debug "$prefix. File: $(format-args "$filePath"). FromDir: $(format-args "$directoryFrom"), ToDir: $(format-args "$directoryTo") Rest args: $@"
+    
     local fromFilePath="$directoryFrom/$fromRelativePath"
     local toFilePath="$directoryTo/$fromRelativePath"
 
