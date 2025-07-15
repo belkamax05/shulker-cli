@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 link-file() {
+    local prefix=$(format-cmd "link-file")
     local src="$1"
+    local srcDir="${src:h}"
     local dest="$2"
-    echo-info "Linking file ${COLOR_YELLOW}$src${STYLE_RESET} to ${COLOR_YELLOW}$dest${STYLE_RESET}"
+    local destDir="${dest:h}"
+    mkdir -p "$destDir"
+    echo-info "$prefix Linking file ${COLOR_YELLOW}$src${STYLE_RESET} to ${COLOR_YELLOW}$dest${STYLE_RESET}"
     ln -sf "$src" "$dest"
 }

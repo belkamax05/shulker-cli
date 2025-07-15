@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+is-directory() {
+    local dirPath="$1"
+    if [[ -d "$dirPath" ]]; then
+        return $CODE_OK
+    else
+        return $CODE_ERROR
+    fi
+}

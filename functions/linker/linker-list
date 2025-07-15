@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+linker-list() {
+    if [[ -z $linker_list ]]; then
+        echo-error "No links defined."
+        return $CODE_ERROR
+    fi
+    echo-info "Linker List:"
+    for key in ${(k)linker_list}; do
+        echo "$key: ${linker_list[$key]}"
+    done
+    return $CODE_OK
+}

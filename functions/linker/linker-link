@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+linker-link() {
+    local prefix=$(format-cmd "linker-link")
+    echo-info "$prefix Linking directories and files..."
+    for key in ${(k)linker_list}; do
+        local value=${linker_list[$key]}
+        local pathType="unknown"
+        if is-directory "$key"; then
+            pathType="directory"
+        elif is-file "$key"; then
+            pathType="file"
+        fi
+        echo-info "$prefix Linking $pathType $(format-args "$key") to $(format-args "$value")"
+        if [[ $pathType == "directory" ]]; then
+            if [[ ! -d $key ]]; then
+                echo-error "$prefix Source directory does not exist: $value"
+                continue
+            fi
+            link-directory-recursive "$key" "$value"
+            # ln -sfn "$value" "$key"
+        elif [[ $pathType == "file" ]]; then
+            if [[ ! -f $key ]]; then
+                echo-error "$prefix Source file does not exist: $value"
+                continue
+            fi
+            link-file "$key" "$value"
+            # ln -sfn "$value" "$key"
+        else
+            echo-error "$prefix Unknown path type for key: $key"
+        fi
+    done
+}

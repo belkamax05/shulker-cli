@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+is-file() {
+    local filePath="$1"
+    if [[ -f "$filePath" ]]; then
+        return $CODE_OK
+    else
+        return $CODE_ERROR
+    fi
+}

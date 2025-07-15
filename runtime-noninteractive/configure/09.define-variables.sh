@@ -1,0 +1,1 @@
+declare -g -A linker_list
