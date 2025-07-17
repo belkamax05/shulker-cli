@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 hook-preexec() {
-  echo "$(format-cmd preexec) Running: $1"
+  echo-debug "$(format-cmd preexec) Running: $1"
 }

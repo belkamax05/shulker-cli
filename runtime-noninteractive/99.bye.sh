@@ -1,1 +1,0 @@
-echo-trace-project "shulker-cli [runtime-noninteractive]" "$__CURRENT_DIR"

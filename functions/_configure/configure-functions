@@ -1,4 +1,5 @@
-autoload-functions-directory() {
+#!/usr/bin/env zsh
+configure-functions() {
     local srcDir="$1"
 
     #? Add base functions directory to fpath
@@ -18,7 +19,3 @@ autoload-functions-directory() {
         autoload -Uz "$funcname"
     done
 }
-
-autoload-functions-directory "$SHULKER_DIR/functions"
-
-SHU_START_TIME=$(get-time-ms)

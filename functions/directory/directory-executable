@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+directory-executable() {
+    local srcDir="$1"
+    for file in $srcDir/*; do
+        local fileFormatted=$(format-args "$file")
+        if [[ -f $file && ! -x $file ]]; then
+            chmod +x "$file"
+            echo "Made $fileFormatted executable"
+        else
+            echo "Skipped $fileFormatted"
+        fi
+    done
+}

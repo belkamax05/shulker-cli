@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+directory-executable "$SHULKER_DIR/bin"

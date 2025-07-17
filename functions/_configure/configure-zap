@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 configure-zap() {
-    local prefix="$SHULKER_PROMPT_PREFIX$(format-cmd 'zap-plugins')"
+    local prefix="$(format-cmd 'configure-zap')"
 
     # for plugin in fzf fzf-tab mvn; do
     #     azSourceSystemPlugin "$plugin/include.zsh"
@@ -16,12 +16,9 @@ configure-zap() {
         zap-zsh/supercharge; do
         x-plug "$plugin"
     done
-    # zap-zsh/zap-prompt
-    # plug "zap-zsh/zap-prompt"
     # for plugin in brew p10k lsd nvm mvn fzf; do
     #     # az include-plugin "$plugin"
     #     azSourceSystemPlugin "$plugin/include.zsh"
     # done
     trace-add "$prefix zap plugins sourced"
 }
-configure-zap

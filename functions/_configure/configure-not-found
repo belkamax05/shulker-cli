@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 function command_not_found_handler {
     local prefix="$(format-cmd "command_not_found_handler")"
     not-found-process "$@"
