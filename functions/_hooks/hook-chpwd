@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+hook-chpwd() {
+  echo "$(format-cmd chpwd) Now in: $PWD"
+}

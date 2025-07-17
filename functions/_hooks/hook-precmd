@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+hook-precmd() {
+    if [[ $TRACE_RUNTIME == true ]]; then
+        local endTime=$(get-time-ms)
+        local elapsedTime=$((endTime - $SHU_START_TIME))
+        echo-info "$(format-cmd precmd) Shell is ready in $(format-args $elapsedTime)ms!"
+    fi
+    add-zsh-hook -d precmd hook-precmd
+}

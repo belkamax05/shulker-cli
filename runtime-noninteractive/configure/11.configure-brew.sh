@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 configure-brew() {
     local prefix="$SHULKER_PROMPT_PREFIX$(format-cmd 'brew')"
-    if [[ $(command -v brew) == "" ]]; then
+    if ! command-exists brew; then
         local brewEnvPath=""
         is-linux && brewEnvPath="/home/linuxbrew/.linuxbrew/bin/brew"
         is-darwin && brewEnvPath="/opt/homebrew/bin/brew"
