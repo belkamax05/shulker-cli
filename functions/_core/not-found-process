@@ -7,6 +7,7 @@ not-found-process() {
     # fi
     shift 1
     local prefix="$(format-cmd "not-found-process")"
+    local returnCode=$CODE_NOT_FOUND
 
     #? check if x-${command} exists
     if command-exists "x-${command}"; then
@@ -16,7 +17,6 @@ not-found-process() {
     fi
 
     #? check if can be run as script at scripts folder
-    local returnCode=$CODE_NOT_FOUND
     script-run "$SHULKER_DIR/scripts/$command" $@
     returnCode=$?
     if [[ $returnCode -ne $CODE_NOT_FOUND ]]; then
@@ -25,7 +25,6 @@ not-found-process() {
     fi
 
     #? check if can be run as script at current directory
-    local returnCode=$CODE_NOT_FOUND
     script-run "$PWD/$command" $@
     returnCode=$?
     if [[ $returnCode -ne $CODE_NOT_FOUND ]]; then
@@ -33,6 +32,14 @@ not-found-process() {
         return $returnCode
     fi
 
+    #? check if can be run as FE script defined in package.json
+    pkg-manager-exists $command
+    returnCode=$?
+    if [[ $returnCode -ne $CODE_NOT_FOUND ]]; then
+        pkg-manager-run $command $@
+        returnCode=$?
+        return $returnCode
+    fi
 
     #? if 3 or more words are passed, assume the command is a valid AI command
     # if [[ $isAtLeast3Args == true ]]; then

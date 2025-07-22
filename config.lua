@@ -8,8 +8,8 @@ local prompt_type = "p10k" --? Possible options are "p10k", "kali", "zap", "cust
 --? Uncomment the following lines to enable debugging, verbose output, or tracing
 -- debug = true
 -- verbose = true
-trace = true
-trace_runtime = true
+-- trace = true
+-- trace_runtime = true
 
 -- prompt_type = "zap"
 -- prompt_type = "custom"

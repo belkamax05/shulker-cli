@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+pkg-manager-exists() {
+    local command=$1
+    local prefix=$(format-cmd "pkg-manager-exists")
+    local commandFormatted=$(format-args "$command")
+    if x-jq -e --arg cmd "$command" '.scripts[$cmd] != null' package.json &>/dev/null; then
+        echo-debug "$prefix Command $commandFormatted is found"
+        return $CODE_OK
+    fi
+    echo-debug "$prefix Command $commandFormatted not found"
+    return $CODE_NOT_FOUND
+}

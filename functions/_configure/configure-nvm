@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-nvm_cmd_list=(nvm npm yarn node gemini)
+nvm_cmd_list=(nvm npm yarn npx node pnpm gemini)
