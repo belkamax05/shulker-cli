@@ -14,6 +14,8 @@ configure-exports
 configure-brew
 configure-hooks
 configure-paths
+configure-nvm
+override-nvm-load
 
 config-emit
 

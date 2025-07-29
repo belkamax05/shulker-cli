@@ -7,9 +7,6 @@ configure-alias
 configure-autosuggestions
 configure-fzf
 configure-prompt
-configure-nvm
 configure-not-found
-
-override-nvm-load
 
 echo-trace-project "shulker-cli [zshrc]" "$__CURRENT_DIR"
