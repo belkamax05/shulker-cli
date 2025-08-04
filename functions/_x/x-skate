@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+if ! command-exists skate; then
+    brew tap charmbracelet/tap && brew install charmbracelet/tap/skate > /dev/null 2>&1
+fi
+skate $@
+return $?
