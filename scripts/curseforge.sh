@@ -1,0 +1,1 @@
+~/apps/CurseForge-1.285.2-27841.AppImage --no-sandbox
