@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+is-symlink() {
+    if [[ -L "$1" ]]; then
+        return $CODE_OK
+    fi
+    return $CODE_ERROR
+}

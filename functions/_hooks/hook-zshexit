@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 hook-zshexit() {
-  echo "Bye, $USER!"
+  # echo "Bye, $USER!"
 }

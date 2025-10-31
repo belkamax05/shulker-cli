@@ -1,12 +1,13 @@
 #!/usr/bin/env zsh
 link-file() {
-    local prefix=$(format-cmd "link-file")
+    local prefix=$(format-cmd "link-file_personal")
     local src="$1"
     local srcDir="${src:h}"
     local dest="$2"
     local destDir="${dest:h}"
     mkdir -p "$destDir"
     local pointingTo=$(link-pointing-to "$dest")
+    # echo "$src       >>>          $dest"
     local pointingToMessage=""
     local confirmLinking=false
     if [[ -n "$pointingTo" ]]; then
@@ -20,9 +21,13 @@ link-file() {
     fi
     local message="$prefix Linking file\n$(pad-left "from" 20 " ") $(format-args "$src")\n$(pad-left "to" 20 " ") $(format-args "$dest")\n$(pad-left " " 20 " ")$pointingToMessage"
     if [[ "$confirmLinking" == true ]]; then
+        # echo "dest check at $dest"
+        # if [[ -f $dest ]]; then
+        #     echo-warning "$dest already exists and is a regular file."
+        # fi
         ln -sf "$src" "$dest"
         echo-success "$message"
     else
-        echo-info "$message"
+        # echo-info "$message"
     fi
 }

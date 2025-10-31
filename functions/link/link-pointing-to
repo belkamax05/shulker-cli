@@ -2,12 +2,12 @@
 link-pointing-to() {
     local linkPath="$1"
     if [[ ! -L "$linkPath" ]]; then
-        echo-error "$linkPath is not a symbolic link."
+        echo-error "$(format-args "$linkPath") is not a symbolic link."
         return $CODE_ERROR
     fi
     local targetPath=$(readlink "$linkPath")
     if [[ -z "$targetPath" ]]; then
-        echo-error "Could not resolve the target of the link $linkPath."
+        echo-error "Could not resolve the target of the link $(format-args "$linkPath")."
         return $CODE_ERROR
     fi
     echo "$targetPath"

@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 configure-brew() {
+    SHULKER_PROMPT_PREFIX="[shulker][configure-brew] "
     local prefix="$SHULKER_PROMPT_PREFIX$(format-cmd 'brew')"
     if ! command-exists brew; then
         local brewEnvPath=""
