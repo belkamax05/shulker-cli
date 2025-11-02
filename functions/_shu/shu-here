@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-z $SHULKER_DIR
+z $SHULKER_CLI_DIR

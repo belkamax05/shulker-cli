@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 shu-run() {
-    local scriptsDir="$SHULKER_DIR/scripts"
+    local scriptsDir="$SHULKER_CLI_DIR/scripts"
     local currentCmd=$1
     shift 1
     local prefix="$(format-cmd "shu-run")"

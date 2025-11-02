@@ -17,7 +17,7 @@ not-found-process() {
     fi
 
     #? check if can be run as script at scripts folder
-    script-run "$SHULKER_DIR/scripts/$command" $@
+    script-run "$SHULKER_CLI_DIR/scripts/$command" $@
     returnCode=$?
     if [[ $returnCode -ne $CODE_NOT_FOUND ]]; then
         echo-debug "$prefix Command $(format-cmd "$command") found and executed successfully."

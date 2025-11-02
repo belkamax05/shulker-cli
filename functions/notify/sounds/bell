@@ -1,2 +1,2 @@
 #!/usr/bin/env zsh
-sound-pipe $SHULKER_DIR/assets/sound/bell.wav "$@"
+sound-pipe $SHULKER_CLI_DIR/assets/sound/bell.wav "$@"
