@@ -7,7 +7,7 @@ configure-alias
 configure-autosuggestions
 configure-fzf
 # if [[ -z $GIO_LAUNCHED_DESKTOP_FILE ]]; then
-    configure-prompt
+    # configure-prompt
 # fi
 
 # TODO Implement echo all env variables including "windsurf"

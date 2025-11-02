@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-x-plug "romkatv/powerlevel10k"
-prompt-p10k-configure
