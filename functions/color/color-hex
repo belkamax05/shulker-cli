@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-echo $(color-rgb $(hex-to-rgb $1))

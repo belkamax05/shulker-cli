@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-trace-add "$(format-success 'Success') importing \"$(format-project "$1")\" from $(format-args "$2")"

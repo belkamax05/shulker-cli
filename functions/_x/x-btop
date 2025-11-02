@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-if ! command-exists btop; then
-    shu install btop > /dev/null 2>&1
-fi
-btop $@
-return $?
