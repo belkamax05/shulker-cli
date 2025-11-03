@@ -4,8 +4,7 @@ __CURRENT_DIR=$(realpath $(dirname $__CURRENT_FILE))
 
 SHULKER_CLI_DIR=$__CURRENT_DIR
 
-source "$SHULKER_CLI_DIR/functions/_configure/configure-functions"
-configure-functions "$SHULKER_CLI_DIR/functions"
+autoload-dir "$SHULKER_CLI_DIR/functions"
 
 SHU_START_TIME=$(get-time-ms)
 
