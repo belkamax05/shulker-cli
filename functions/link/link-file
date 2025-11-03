@@ -28,6 +28,6 @@ link-file() {
         ln -sf "$src" "$dest"
         echo-success "$message"
     else
-        # echo-info "$message"
+        echo-info "$message"
     fi
 }
