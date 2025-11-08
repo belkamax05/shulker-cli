@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-git log -1 --pretty=format:"%h %s"

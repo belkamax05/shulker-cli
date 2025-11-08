@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-git pull
-repo save
-confirm-command "repo sync --push"
