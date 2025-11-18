@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 self-elevate() {
-    ! is-macos && echo-error "Not allowed on non-Mac device" && return 0
+    ! is-darwin && echo-error "Not allowed on non-Mac device" && return 0
     local current_user=$(whoami)
     print-user-permissions
     echo "---"

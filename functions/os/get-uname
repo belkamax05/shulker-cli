@@ -1,2 +1,4 @@
 #!/usr/bin/env zsh
-echo $(uname -s)
+get-uname() {
+    echo $(uname -s)
+}

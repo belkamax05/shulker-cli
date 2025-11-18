@@ -1,2 +1,4 @@
 #!/usr/bin/env zsh
-[[ "$(get-uname)" == "Darwin" ]]
+is-darwin() {
+    [[ "$(get-uname)" == "Darwin" ]]
+}
