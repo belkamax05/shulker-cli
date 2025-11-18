@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-format-color "$COLOR_ARGS$@"
