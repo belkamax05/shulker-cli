@@ -6,8 +6,6 @@ SHULKER_CLI_DIR=$__CURRENT_DIR
 
 autoload-dir "$SHULKER_CLI_DIR/functions"
 
-SHU_START_TIME=$(get-time-ms)
-
 configure-globals
 configure-exports
 configure-brew
