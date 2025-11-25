@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-sound-pipe $SHULKER_CLI_DIR/assets/sound/tada.mp3 "$@"

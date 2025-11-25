@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-performance() {
-    local start_time=$(get-time-ms)
-    $@
-    local end_time=$(get-time-ms)
-    local elapsed_time=$((end_time - start_time))
-    echo "Command executed in $elapsed_time ms"
-}
