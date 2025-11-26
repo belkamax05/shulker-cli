@@ -49,7 +49,7 @@ configure-fzf
 
 configure-not-found
 
-export PATH="$HOME/.nvm/versions/node/v20.14.0/bin:$PATH"
+path-prepend "$HOME/.nvm/versions/node/v20.14.0/bin"
 
 echo-trace-project "shulker-cli [zshrc]" "$__CURRENT_DIR"
 

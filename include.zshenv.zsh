@@ -16,7 +16,7 @@ override-nvm-load
 
 config-emit
 
-export PATH="$PATH:$SHULKER_CLI_DIR/bin"
-export PATH="$HOME/.nvm/versions/node/v20.14.0/bin:$PATH"
+path-prepend "$SHULKER_CLI_DIR/bin"
+path-prepend "$HOME/.nvm/versions/node/v20.14.0/bin"
 
 echo-trace-project "shulker-cli [zshenv]" "$__CURRENT_DIR"
