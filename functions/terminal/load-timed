@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-load-timed() {
-    local startTime=$(get-time-ms)
-    load
-    local endTime=$(get-time-ms)
-    local elapsedTime=$(($endTime - $startTime))
-    echo-info "Command $(format-args "load") took $elapsedTime ms to execute."
-}
