@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-linker() {
-    echo "Hello from Linker"
-}

@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-test-fun-zsh-body() {
-    echo "test-fun-zsh-body OK"
-}

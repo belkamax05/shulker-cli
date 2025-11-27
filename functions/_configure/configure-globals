@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-declare -g -A linker_list

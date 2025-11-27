@@ -1,2 +1,0 @@
-#!/usr/bin/env zsh
-x-lua $SHULKER_CLI_DIR/lua/config/emit.lua

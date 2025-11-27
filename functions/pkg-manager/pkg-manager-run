@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-pkg-manager-run() {
-    local command=$1
-    local prefix=$(format-cmd "pkg-manager-run")
-    local commandFormatted=$(format-args "$command")
-    shift 1
-    npm run $command $@
-}

@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-hook-zshaddhistory() {
-  [[ $1 == *password* ]] && return 1
-  return 0
-}

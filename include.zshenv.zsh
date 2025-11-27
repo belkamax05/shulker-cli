@@ -4,6 +4,9 @@ __CURRENT_DIR=$(realpath $(dirname $__CURRENT_FILE))
 
 SHULKER_CLI_DIR=$__CURRENT_DIR
 
+echo "cli-legacy 2"
+
+
 autoload-dir "$SHULKER_CLI_DIR/functions"
 
 configure-globals
@@ -16,7 +19,6 @@ override-nvm-load
 
 config-emit
 
-path-prepend "$SHULKER_CLI_DIR/bin"
 path-prepend "$HOME/.nvm/versions/node/v20.14.0/bin"
 
 echo-trace-project "shulker-cli [zshenv]" "$__CURRENT_DIR"

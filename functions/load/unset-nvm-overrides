@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-unset-nvm-overrides() {
-  for nvmCmd in "${nvm_cmd_list[@]}"; do
-    unset -f "$nvmCmd"
-  done
-
-  echo-debug "$(format-cmd 'unset-nvm-overrides') NVM overrides unset"
-}

@@ -1,5 +1,0 @@
-#!/usr/bin/env zsh
-gnome-text-scaling() {
-    local value="$1" # 1.0 is default
-    gsettings set org.gnome.desktop.interface text-scaling-factor $value
-}
